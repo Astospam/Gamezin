@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1qvjlo20yerb"]
+
+[ext_resource type="Texture2D" uid="uid://b6l3w6ed1advg" path="res://Imagens/Terceiro piso.png" id="1_r2tf6"]
+[ext_resource type="Script" uid="uid://7n3ycolu8ucd" path="res://Scenes/movimento.gd" id="1_yde7c"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_0erqr"]
+
+[node name="TerceiroPiso" type="Node2D"]
+script = ExtResource("1_yde7c")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 900.0
+mouse_filter = 2
+texture = ExtResource("1_r2tf6")
+
+[node name="Acesso" parent="Background" instance=ExtResource("2_0erqr")]
+position = Vector2(80.9372, 390.195)
+metadata/Lugar = "corredor_janela"
+
+[editable path="Background/Acesso"]

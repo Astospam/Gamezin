@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://lx2yng6vuflg"]
+
+[ext_resource type="Texture2D" uid="uid://bojbob2wo3yyc" path="res://Imagens/Corredor-janela.png" id="1_u2olf"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_j81xa"]
+
+[node name="CorredorJanela" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u2olf")
+
+[node name="Acesso" parent="TextureRect" instance=ExtResource("2_j81xa")]
+position = Vector2(859, 202)
+metadata/Lugar = "terceiro_piso"
+
+[node name="Label" parent="TextureRect/Acesso" index="1"]
+offset_left = 17.2068
+offset_top = -4.23392
+offset_right = 210.207
+offset_bottom = 122.766
+text = "Janela
+"
+
+[editable path="TextureRect/Acesso"]
