@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bojbob2wo3yyc"
-path="res://.godot/imported/Corredor-janela.png-0502baacb2c5bc4ecc4f882d9b52af4e.ctex"
+uid="uid://vxibgfmn84y2"
+path="res://.godot/imported/Piso 2 - Elevador porta aberta.png-f4655a6f3ebbb5c0a202bf919479f96a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Corredor-janela.png"
-dest_files=["res://.godot/imported/Corredor-janela.png-0502baacb2c5bc4ecc4f882d9b52af4e.ctex"]
+source_file="res://Imagens/Cenários Jogo/Piso 2 - Elevador porta aberta.png"
+dest_files=["res://.godot/imported/Piso 2 - Elevador porta aberta.png-f4655a6f3ebbb5c0a202bf919479f96a.ctex"]
 
 [params]
 

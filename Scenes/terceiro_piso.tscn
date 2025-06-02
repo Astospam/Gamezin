@@ -1,20 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1qvjlo20yerb"]
+[gd_scene load_steps=5 format=3 uid="uid://b1qvjlo20yerb"]
 
-[ext_resource type="Texture2D" uid="uid://b6l3w6ed1advg" path="res://Imagens/Terceiro piso.png" id="1_r2tf6"]
-[ext_resource type="Script" uid="uid://7n3ycolu8ucd" path="res://Scenes/movimento.gd" id="1_yde7c"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_0erqr"]
+[ext_resource type="Texture2D" uid="uid://cgenlrpx4sugy" path="res://Imagens/Cenários Jogo/Terceiro piso.png" id="2_yde7c"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="4_wisyl"]
+
+[sub_resource type="GDScript" id="GDScript_yde7c"]
+script/source = "extends Node2D
+
+@onready var acesso = $Background/Acesso
+"
 
 [node name="TerceiroPiso" type="Node2D"]
-script = ExtResource("1_yde7c")
+script = SubResource("GDScript_yde7c")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1600.0
 offset_bottom = 900.0
 mouse_filter = 2
-texture = ExtResource("1_r2tf6")
+texture = ExtResource("2_yde7c")
 
 [node name="Acesso" parent="Background" instance=ExtResource("2_0erqr")]
-position = Vector2(80.9372, 390.195)
+position = Vector2(73, 324)
+rotation = -0.0382486
+metadata/Lugar = "elevador_3"
+
+[node name="Acesso2" parent="Background" instance=ExtResource("2_0erqr")]
+position = Vector2(781, 401)
+rotation = -0.084854
+metadata/Lugar = "segundo_piso"
+
+[node name="CollisionShape2D" parent="Background/Acesso2" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="Background/Acesso2" index="1"]
+offset_left = -13.9685
+offset_top = -6.07267
+offset_right = 260.031
+offset_bottom = 63.9274
+rotation = -0.00452365
+text = "Segundo Piso"
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_0erqr")]
+position = Vector2(1329, 709)
+rotation = 0.000492083
+metadata/Lugar = "gamelab"
+
+[node name="CollisionShape2D" parent="Background/Acesso3" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = 28.971
+offset_top = -6.13844
+offset_right = 302.971
+offset_bottom = 120.862
+rotation = -0.00452365
+text = "Gamelab
+"
+
+[node name="Acesso4" parent="Background" instance=ExtResource("2_0erqr")]
+position = Vector2(33, 707)
+rotation = -0.000401884
+scale = Vector2(1, 1)
 metadata/Lugar = "corredor_janela"
 
+[node name="CollisionShape2D" parent="Background/Acesso4" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="Background/Acesso4" index="1"]
+offset_left = 2.00321
+offset_top = -7.99925
+offset_right = 276.003
+offset_bottom = 119.001
+rotation = -0.00452365
+text = "Corredor
+"
+
+[node name="Hud" parent="Background" instance=ExtResource("4_wisyl")]
+
 [editable path="Background/Acesso"]
+[editable path="Background/Acesso2"]
+[editable path="Background/Acesso3"]
+[editable path="Background/Acesso4"]

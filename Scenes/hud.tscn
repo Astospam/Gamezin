@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cskeg4svywmvm"]
+
+[ext_resource type="FontFile" uid="uid://jqjuimpqswj8" path="res://Imagens/alegreya-sc/AlegreyaSC-Regular.ttf" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://dxvndip2k7l47" path="res://Scripts/hud_control.gd" id="1_fccik"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fccik")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1394.0
+offset_top = 25.0
+offset_right = 1598.0
+offset_bottom = 87.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 1

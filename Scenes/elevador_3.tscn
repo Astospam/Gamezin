@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://fnrr2okph253"]
+
+[ext_resource type="Texture2D" uid="uid://cc2xcbvwyvrvx" path="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png" id="1_l8pbw"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_hor6l"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_hor6l"]
+
+[node name="Elevador3" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_l8pbw")
+
+[node name="Acesso" parent="Background" instance=ExtResource("2_hor6l")]
+position = Vector2(1298, 785)
+rotation = -0.00152205
+metadata/Lugar = "terceiro_piso"
+
+[node name="Label" parent="Background/Acesso" index="1"]
+offset_left = -58.0076
+offset_top = 4.91174
+offset_right = 219.992
+offset_bottom = 74.9118
+rotation = -0.000727494
+text = "Terceiro Piso"
+
+[node name="Acesso2" parent="Background" instance=ExtResource("2_hor6l")]
+position = Vector2(202, 476)
+rotation = -0.0030441
+
+[node name="Label" parent="Background/Acesso2" index="1"]
+offset_left = -58.0028
+offset_top = 0.823503
+offset_right = 219.997
+offset_bottom = 70.8235
+rotation = 0.00654254
+text = "Segundo Piso"
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_hor6l")]
+position = Vector2(201, 642)
+rotation = -0.0060882
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = -57.9928
+offset_top = -1.35311
+offset_right = 220.007
+offset_bottom = 68.6469
+rotation = 0.00654254
+text = "Primeiro Piso"
+
+[node name="Hud" parent="Background" instance=ExtResource("3_hor6l")]
+
+[editable path="Background/Acesso"]
+[editable path="Background/Acesso2"]
+[editable path="Background/Acesso3"]

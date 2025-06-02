@@ -1,18 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://lx2yng6vuflg"]
+[gd_scene load_steps=4 format=3 uid="uid://lx2yng6vuflg"]
 
-[ext_resource type="Texture2D" uid="uid://bojbob2wo3yyc" path="res://Imagens/Corredor-janela.png" id="1_u2olf"]
+[ext_resource type="Texture2D" uid="uid://b3ur6g76iowb1" path="res://Imagens/Cenários Jogo/Corredor-janela.png" id="1_u2olf"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_j81xa"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_j81xa"]
 
 [node name="CorredorJanela" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -4.0
+offset_right = 1596.0
+offset_bottom = 900.0
 texture = ExtResource("1_u2olf")
 
 [node name="Acesso" parent="TextureRect" instance=ExtResource("2_j81xa")]
-position = Vector2(859, 202)
-metadata/Lugar = "terceiro_piso"
+position = Vector2(863, 124)
+rotation = -0.0167289
+metadata/Lugar = "janela"
 
 [node name="Label" parent="TextureRect/Acesso" index="1"]
 offset_left = 17.2068
@@ -22,4 +25,24 @@ offset_bottom = 122.766
 text = "Janela
 "
 
+[node name="Acesso3" parent="TextureRect" instance=ExtResource("2_j81xa")]
+position = Vector2(783, 799)
+rotation = 0.000209406
+metadata/Lugar = "terceiro_piso"
+
+[node name="CollisionShape2D" parent="TextureRect/Acesso3" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="TextureRect/Acesso3" index="1"]
+offset_left = -21.0013
+offset_top = -5.99565
+offset_right = 256.999
+offset_bottom = 121.004
+rotation = -0.00452365
+text = "Terceiro Piso
+"
+
+[node name="Hud" parent="TextureRect" instance=ExtResource("3_j81xa")]
+
 [editable path="TextureRect/Acesso"]
+[editable path="TextureRect/Acesso3"]
