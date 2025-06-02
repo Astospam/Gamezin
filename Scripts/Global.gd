@@ -18,9 +18,9 @@ var monster_recep: int = 0
 var monster_recep_prob = 0.4
 var monster_recep_cd = 90.0
 var monster_recep_time = 0.0
-var monster_recep_answer = 7.0
-var monster_recep_walk = 14.0
-var monster_recep_local = "fora"
+var monster_recep_answer = 9.0
+var monster_recep_walk = 18.0
+var monster_recep_local = "menu"
 var monster_recep_aberta: bool = false
 #state1 - Na porta
 #state2 - entrou
@@ -70,38 +70,39 @@ func carregar_jogo():
 
 func _process(delta):
 	
-	#MONSTER RECEP
-	if (local == monster_recep_local or (monster_recep == 2 and local == "recepcao")):
-		print("morte")
-		morrer()
-	monster_reception_cdr()
-	
-	#DOPEL
-	dopel_cdr()
-	if (not SonsController.playerd.playing):
-		if ((local == "recepcao" and dopel == 1) or (local == "janela" and dopel == 2)):
-			SonsController.dopel_laugh()
-			
-	#JANELA
-	janela_cdr()
-	if (janela == 4 and (local == "gamelab" or local == "computador")):
-		print("morte")
-		morrer()
-			
-	#TEMPO BÁSICO
-	if pausado == false:
-		if (dopel != 1):
-			monster_recep_time += delta
-		if (noite > 1):
-			dopel_time += delta
-		if (dopel != 2 and noite > 1 and janela_pause == false):
-			janela_time += delta
+	if (local != "menu" and local != "morte"):
+		#MONSTER RECEP
+		if (local == monster_recep_local or (monster_recep == 2 and local == "recepcao")):
+			print("morte")
+			morrer()
+		monster_reception_cdr()
 		
-		tempo_decorrido += delta
-		if (tempo_decorrido >= 1440):
-			tempo_decorrido = 0.0
-		elif (tempo_decorrido < 1000) and (tempo_decorrido >= 300):
-			acabar_noite()
+		#DOPEL
+		dopel_cdr()
+		if (not SonsController.playerd.playing):
+			if ((local == "recepcao" and dopel == 1) or (local == "janela" and dopel == 2)):
+				SonsController.dopel_laugh()
+				
+		#JANELA
+		janela_cdr()
+		if (janela == 4 and (local == "gamelab" or local == "computador")):
+			print("morte")
+			morrer()
+				
+		#TEMPO BÁSICO
+		if pausado == false:
+			if (dopel != 1):
+				monster_recep_time += delta
+			if (noite > 1):
+				dopel_time += delta
+			if (dopel != 2 and noite > 1 and janela_pause == false):
+				janela_time += delta
+			
+			tempo_decorrido += delta
+			if (tempo_decorrido >= 1440):
+				tempo_decorrido = 0.0
+			elif (tempo_decorrido < 1000) and (tempo_decorrido >= 300):
+				acabar_noite()
 		
 func acabar_noite():
 	pausado = true
@@ -111,6 +112,7 @@ func acabar_noite():
 func morrer():
 	pausado = true
 	SonsController.stop_all()
+	local = "morte"
 	get_tree().change_scene_to_file("res://Scenes/morte.tscn")
 	
 func comecar_noite(number_n: int):
@@ -124,7 +126,7 @@ func comecar_noite(number_n: int):
 	dopel_set()
 	dopel_prob = 0.2 + 0.1*(noite -2)
 	janela_set()
-	janela_prob = 0.2 + 0.1*(noite -2)
+	janela_prob = 0.5 + 0.1*(noite -2)
 
 
 #MONSTER RECEP###############################################################################
@@ -264,20 +266,21 @@ func janela_proba():
 		0:
 			if randf() < janela_prob:
 				janela += 1
-				janela_prob = 0.2 + 0.1*(noite -2)
+				janela_prob = 0.5 + 0.1*(noite -2)
 				SonsController.janela_tocar(volume_janela)
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(3.5).timeout
 				SonsController.janela_stop()
 				print("janela bixo")
 			else:
 				janela_prob += 0.1
 				janela_cd -= 20.0
 				print("nothing j")
+				print(janela_prob)
 
 		1, 2, 3:
 			if randf() < janela_prob:
 				janela += 1
-				janela_prob = 0.2 + 0.1*(noite -2)
+				janela_prob = 0.5 + 0.1*(noite -2)
 				print("janela advance")
 				print(janela)
 			else:

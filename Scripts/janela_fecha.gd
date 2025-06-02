@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var label = $Label
+@onready var label2 = $Label2
 @onready var background: TextureRect = get_parent()
 @onready var nada = preload("res://Imagens/Cenários Jogo/Corredor - Janela close.png")
 @onready var jan1 = preload("res://Imagens/Cenários Jogo/Monstro Janela.png")
@@ -12,33 +13,45 @@ var cap = 2.0
 var back = "nada"
 
 func _process(delta):
-	if (pressionando == true):
-		if (Global.janela_pause == false):
+	if pressionando:
+		if not Global.janela_pause:
 			SonsController.janela_tocar(Global.volume_janela)
 			Global.janela_pause = true
 		Global.janela_liberar += delta
-		if (Global.janela_liberar >= cap):
+		if Global.janela_liberar >= cap:
 			Global.janela_liberar = 0.0
 			Global.janela -= 1
-	elif (Global.janela_pause == true):
-		SonsController.janela_stop()
+	elif Global.janela_pause:
 		Global.janela_pause = false
-	if (back != "jan1" and Global.janela == 1):
-		back = "jan1"
-		background.texture = jan1
-		label.visible = true
-	if (back != "jan2" and Global.janela == 2):
-		back = "jan2"
-		background.texture = jan2
-		label.visible = true
-	if (back != "jan3" and Global.janela == 3):
-		back = "jan3"
-		background.texture = jan3
-		label.visible = true
-	if (back != "nada" and (Global.janela == 0 or Global.janela == 4)):
-		back = "nada"
-		background.texture = nada
-		label.visible = false
+		SonsController.janela_stop()
+
+	match Global.janela:
+		1:
+			if back != "jan1":
+				back = "jan1"
+				background.texture = jan1
+				label.visible = true
+				label2.visible = true
+		2:
+			if back != "jan2":
+				back = "jan2"
+				background.texture = jan2
+				label.visible = true
+				label2.visible = true
+		3:
+			if back != "jan3":
+				back = "jan3"
+				background.texture = jan3
+				label.visible = true
+				label2.visible = true
+		0, 4:
+			if back != "nada":
+				back = "nada"
+				background.texture = nada
+				SonsController.janela_stop()
+				label.visible = false
+				label2.visible = false
+
 	
 func _on_mouse_entered():
 	label.add_theme_color_override("font_color", Color8(168, 17, 0))

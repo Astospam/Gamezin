@@ -54,6 +54,22 @@ theme_override_fonts/font = ExtResource("5_7ypqx")
 theme_override_font_sizes/font_size = 45
 text = "Fechar Janela"
 
+[node name="Label2" type="Label" parent="TextureRect/JanelaFecha"]
+visible = false
+offset_left = -64.0
+offset_top = 56.0
+offset_right = 221.0
+offset_bottom = 183.0
+rotation = -0.0021949
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_7ypqx")
+theme_override_font_sizes/font_size = 25
+text = "Segure para
+Fechar"
+horizontal_alignment = 1
+
 [connection signal="input_event" from="TextureRect/JanelaFecha" to="TextureRect/JanelaFecha" method="_on_input_event"]
 [connection signal="mouse_entered" from="TextureRect/JanelaFecha" to="TextureRect/JanelaFecha" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect/JanelaFecha" to="TextureRect/JanelaFecha" method="_on_mouse_exited"]

@@ -34,8 +34,15 @@ func janela_volume(volume: float):
 	
 func tocar_radio():
 	match Global.noite:
+		
 		2:
 			player_radio.stream = load("res://Audios/Sons/Áudio Noite 2.ogg")
+		3:
+			player_radio.stream = load("res://Audios/Sons/Locutora dia 3 completo.ogg")
+		4:
+			player_radio.stream = load("res://Audios/Sons/Áudio noite 4.ogg")
+		5:
+			player_radio.stream = load("res://Audios/Sons/Cultista completo.ogg")
 	player_radio.play()
 
 func radio_volume(volume: float):

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://usk6ndyiggfq"
+path="res://.godot/imported/Cultista completo.ogg-481a8e3ef1b387015b516b4e3e59abf2.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/Cultista completo.ogg"
+dest_files=["res://.godot/imported/Cultista completo.ogg-481a8e3ef1b387015b516b4e3e59abf2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
