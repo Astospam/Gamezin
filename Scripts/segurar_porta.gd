@@ -39,6 +39,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if (Global.dopel == 1):
 			print("morreu dopel")
+			Global.morrer()
 		if (back == "monster"):
 			progress.value += 1
 			if (progress.value >= progress.max_value):

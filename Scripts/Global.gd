@@ -5,8 +5,9 @@ var pausado: bool = false
 var local = "computador"
 var noite = 1
 var ultnoite = 2
-
+var volume_radio = 0
 var volume_recep = 0
+var volume_janela = 0
 
 const ter = ["terreo", "recepcao", "elevador_terreo"]
 const pis1 = ["saida_incendio", "porta_incendio", "primeiro_piso", "elevador_1"]
@@ -68,31 +69,24 @@ func carregar_jogo():
 		ultnoite = data.get("ultnoite", 0)
 
 func _process(delta):
-
+	
 	#MONSTER RECEP
-	if (local in ter):
-		volume_recep = 0
-	if (local in pis1):
-		volume_recep = -7.0
-	if (local in pis2):
-		volume_recep = -14.0
-	if (local in pis3):
-		volume_recep = -21.0
-			
 	if (local == monster_recep_local or (monster_recep == 2 and local == "recepcao")):
 		print("morte")
+		morrer()
 	monster_reception_cdr()
 	
 	#DOPEL
 	dopel_cdr()
-	if (not SonsController.dopel.playing):
-		if (local == "recepcao" and dopel == 1):
+	if (not SonsController.playerd.playing):
+		if ((local == "recepcao" and dopel == 1) or (local == "janela" and dopel == 2)):
 			SonsController.dopel_laugh()
 			
 	#JANELA
 	janela_cdr()
 	if (janela == 4 and (local == "gamelab" or local == "computador")):
 		print("morte")
+		morrer()
 			
 	#TEMPO BÁSICO
 	if pausado == false:
@@ -111,12 +105,21 @@ func _process(delta):
 		
 func acabar_noite():
 	pausado = true
+	ultnoite += 1
+	call_deferred("comecar_noite", ultnoite)
+	
+func morrer():
+	pausado = true
+	SonsController.stop_all()
+	get_tree().change_scene_to_file("res://Scenes/morte.tscn")
 	
 func comecar_noite(number_n: int):
 	randomize()
 	noite = number_n
 	tempo_decorrido = 1260.0
 	pausado = false
+	SonsController.tocar_radio()
+	SonsController.tocar_ambient()
 	monster_reception_set()
 	dopel_set()
 	dopel_prob = 0.2 + 0.1*(noite -2)
@@ -208,23 +211,21 @@ func dopel_proba():
 	match dopel:
 		0:
 			if randf() < dopel_prob:
-				match monster_recep and janela:
-					!0 and !0:
-						dopel_set()
-						print("ocupados")
-					!0 and 0:
-						dopel = 2
-						print("dopel janela")
-					0 and !0:
-						dopel = 1
-						SonsController.tocar_recep(volume_recep)
-						print("dopel porta")
-					0 and 0:
-						dopel = [1, 2].pick_random()
-						if (dopel == 1):
-							SonsController.tocar_recep(volume_recep)
-						print("dopel n seik")
-						print(dopel)
+				if monster_recep != 0 and janela != 0:
+					dopel_set()
+					print("ocupados")
+				elif monster_recep != 0:
+					dopel = 2
+					print("dopel janela")
+				elif janela != 0:
+					dopel = 1
+					SonsController.tocar_recep(volume_recep)
+					print("dopel porta")
+				else:
+					dopel = [1, 2].pick_random()
+				if dopel == 1:
+					SonsController.tocar_recep(volume_recep)
+					print("dopel n seik")
 				dopel_prob = 0.2 + 0.1*(noite -2)
 			else:
 				dopel_prob += 0.1
@@ -253,17 +254,20 @@ func janela_cdr():
 	match janela:
 		0: recepla = janela_cd
 		1, 2, 3: recepla = janela_in
-	if (janela >= recepla):
+		_: recepla = 3000.0
+	if (janela_time >= recepla):
 		janela_time = 0.0
 		janela_proba()
 
 func janela_proba():
-	print(tempo_decorrido)
 	match janela:
 		0:
 			if randf() < janela_prob:
 				janela += 1
 				janela_prob = 0.2 + 0.1*(noite -2)
+				SonsController.janela_tocar(volume_janela)
+				await get_tree().create_timer(1.5).timeout
+				SonsController.janela_stop()
 				print("janela bixo")
 			else:
 				janela_prob += 0.1
@@ -284,4 +288,4 @@ func janela_set():
 	janela = 0
 	janela_time = 0.0
 	janela_cd = 60.0 - (10*(noite-2))
-	janela_prob = 0.2 + 0.1*(noite -2)
+	janela_prob = 0.5 + 0.1*(noite -2)

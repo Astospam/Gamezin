@@ -14,7 +14,7 @@ var back = "nada"
 func _process(delta):
 	if (pressionando == true):
 		if (Global.janela_pause == false):
-			SonsController.janela_tocar()
+			SonsController.janela_tocar(Global.volume_janela)
 			Global.janela_pause = true
 		Global.janela_liberar += delta
 		if (Global.janela_liberar >= cap):
@@ -30,12 +30,15 @@ func _process(delta):
 	if (back != "jan2" and Global.janela == 2):
 		back = "jan2"
 		background.texture = jan2
+		label.visible = true
 	if (back != "jan3" and Global.janela == 3):
 		back = "jan3"
-		background.texture = jan2
+		background.texture = jan3
+		label.visible = true
 	if (back != "nada" and (Global.janela == 0 or Global.janela == 4)):
 		back = "nada"
 		background.texture = nada
+		label.visible = false
 	
 func _on_mouse_entered():
 	label.add_theme_color_override("font_color", Color8(168, 17, 0))
@@ -47,6 +50,9 @@ func _on_mouse_exited():
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if (Global.janela > 0):
-			pressionando = event.pressed
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if Global.janela > 0:
+			pressionando = event.pressed  # true ao pressionar, false ao soltar
+		if Global.dopel == 2 and event.pressed:
+			print("morreu dopel janela")
+			Global.morrer()

@@ -5,8 +5,12 @@
 [node name="SonsController" type="Node"]
 script = ExtResource("1_xrtcl")
 
+[node name="Radio" type="AudioStreamPlayer" parent="."]
+
 [node name="BaterRecep" type="AudioStreamPlayer" parent="."]
 
 [node name="Dopel" type="AudioStreamPlayer" parent="."]
 
 [node name="JanelaSound" type="AudioStreamPlayer" parent="."]
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]

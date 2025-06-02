@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgwtw1gkal8qy"]
+
+[ext_resource type="FontFile" uid="uid://jqjuimpqswj8" path="res://Imagens/alegreya-sc/AlegreyaSC-Regular.ttf" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://bcme2eh8bgdqi" path="res://Scenes/menu.gd" id="1_xhh6f"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xhh6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2tf6"]
+size = Vector2(301.1, 146.19)
+
+[node name="Menu" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1599.0
+offset_bottom = 897.0
+texture = SubResource("PlaceholderTexture2D_xhh6f")
+
+[node name="Novo Jogo" type="Area2D" parent="TextureRect"]
+position = Vector2(721, 425)
+script = ExtResource("1_xhh6f")
+metadata/noite = 1
+metadata/state = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Novo Jogo"]
+position = Vector2(80.6014, 34.448)
+shape = SubResource("RectangleShape2D_r2tf6")
+
+[node name="Label" type="Label" parent="TextureRect/Novo Jogo"]
+offset_left = -30.0
+offset_top = 3.0
+offset_right = 181.0
+offset_bottom = 73.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 45
+text = "Novo Jogo"
+
+[node name="Label2" type="Label" parent="TextureRect/Novo Jogo"]
+visible = false
+offset_left = 1.0
+offset_top = 50.0
+offset_right = 219.0
+offset_bottom = 120.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 30
+text = "
+"
+
+[node name="Novo Jogo2" type="Area2D" parent="TextureRect"]
+position = Vector2(721, 588)
+script = ExtResource("1_xhh6f")
+metadata/noite = 1
+metadata/state = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Novo Jogo2"]
+position = Vector2(80.6014, 34.448)
+shape = SubResource("RectangleShape2D_r2tf6")
+
+[node name="Label" type="Label" parent="TextureRect/Novo Jogo2"]
+offset_left = -33.0
+offset_top = -6.0
+offset_right = 185.0
+offset_bottom = 64.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 45
+text = "Continuar"
+
+[node name="Label2" type="Label" parent="TextureRect/Novo Jogo2"]
+offset_left = -2.0
+offset_top = 39.0
+offset_right = 216.0
+offset_bottom = 109.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 30
+
+[connection signal="input_event" from="TextureRect/Novo Jogo" to="TextureRect/Novo Jogo" method="_on_input_event"]
+[connection signal="mouse_entered" from="TextureRect/Novo Jogo" to="TextureRect/Novo Jogo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect/Novo Jogo" to="TextureRect/Novo Jogo" method="_on_mouse_exited"]
+[connection signal="input_event" from="TextureRect/Novo Jogo2" to="TextureRect/Novo Jogo2" method="_on_input_event"]
+[connection signal="mouse_entered" from="TextureRect/Novo Jogo2" to="TextureRect/Novo Jogo2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect/Novo Jogo2" to="TextureRect/Novo Jogo2" method="_on_mouse_exited"]

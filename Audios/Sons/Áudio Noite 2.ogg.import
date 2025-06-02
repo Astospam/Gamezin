@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwq27mqgk8xje"
+path="res://.godot/imported/Áudio Noite 2.ogg-8c5ee62e947ebe4f98adcbfe119ac5f1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/Áudio Noite 2.ogg"
+dest_files=["res://.godot/imported/Áudio Noite 2.ogg-8c5ee62e947ebe4f98adcbfe119ac5f1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

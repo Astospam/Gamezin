@@ -1,10 +1,12 @@
 extends Control
 
 @onready var label = $Label
+@onready var nlabel = $Label2
 
 func _ready():
 	var tempo = Global.tempo_decorrido
 	label.text = formatar_tempo(tempo)
+	nlabel.text = "Noite " + str(Global.noite)
 
 func _process(delta):
 	var tempo = Global.tempo_decorrido
