@@ -28,7 +28,7 @@ text = "Janela
 [node name="Acesso3" parent="TextureRect" instance=ExtResource("2_j81xa")]
 position = Vector2(783, 799)
 rotation = 0.000209406
-metadata/Lugar = "terceiro_piso"
+metadata/Lugar = "segundo_piso"
 
 [node name="CollisionShape2D" parent="TextureRect/Acesso3" index="0"]
 position = Vector2(118.27, 27.2042)
@@ -39,7 +39,7 @@ offset_top = -5.99565
 offset_right = 256.999
 offset_bottom = 121.004
 rotation = -0.00452365
-text = "Terceiro Piso
+text = "Segundo Piso
 "
 
 [node name="Hud" parent="TextureRect" instance=ExtResource("3_j81xa")]

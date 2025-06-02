@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://ftnfrtir7ggq"]
+
+[ext_resource type="Texture2D" uid="uid://bt7fapl15bkxu" path="res://Imagens/Cenários Jogo/Recepção.png" id="1_5eiql"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_74eq6"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_74eq6"]
+[ext_resource type="Script" uid="uid://q8hwsunncq5g" path="res://Scripts/segurar_porta.gd" id="4_6jtbk"]
+[ext_resource type="FontFile" uid="uid://jqjuimpqswj8" path="res://Imagens/alegreya-sc/AlegreyaSC-Regular.ttf" id="5_lrlkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2tf6"]
+size = Vector2(301.1, 146.19)
+
+[node name="Recepcao" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5eiql")
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_74eq6")]
+position = Vector2(1278, 746)
+rotation = 0.0010945
+metadata/Lugar = "terreo"
+
+[node name="CollisionShape2D" parent="Background/Acesso3" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = 47.9944
+offset_top = -5.05251
+offset_right = 321.994
+offset_bottom = 121.947
+rotation = -0.00452365
+text = "Térreo
+"
+
+[node name="Hud" parent="Background" instance=ExtResource("3_74eq6")]
+
+[node name="SegurarPorta" type="Area2D" parent="Background"]
+position = Vector2(633, 326)
+script = ExtResource("4_6jtbk")
+metadata/Lugar = "terreo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SegurarPorta"]
+position = Vector2(118.27, 27.2041)
+shape = SubResource("RectangleShape2D_r2tf6")
+
+[node name="Label" type="Label" parent="Background/SegurarPorta"]
+offset_left = -30.0
+offset_top = -12.0
+offset_right = 266.0
+offset_bottom = 115.0
+rotation = 0.00189306
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_lrlkh")
+theme_override_font_sizes/font_size = 45
+text = "Segurar Porta
+"
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/SegurarPorta"]
+offset_left = 123.0
+offset_top = 37.0
+offset_right = 127.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.556863, 0.0392157, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_lrlkh")
+theme_override_font_sizes/font_size = 40
+max_value = 10.0
+
+[connection signal="input_event" from="Background/SegurarPorta" to="Background/SegurarPorta" method="_on_input_event"]
+[connection signal="mouse_entered" from="Background/SegurarPorta" to="Background/SegurarPorta" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Background/SegurarPorta" to="Background/SegurarPorta" method="_on_mouse_exited"]
+
+[editable path="Background/Acesso3"]

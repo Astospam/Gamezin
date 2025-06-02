@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpy8qns762uce"]
+
+[ext_resource type="Script" uid="uid://cgm6x5l4hhqia" path="res://Scripts/sons_controller.gd" id="1_xrtcl"]
+
+[node name="SonsController" type="Node"]
+script = ExtResource("1_xrtcl")
+
+[node name="BaterRecep" type="AudioStreamPlayer" parent="."]
+
+[node name="Dopel" type="AudioStreamPlayer" parent="."]
+
+[node name="JanelaSound" type="AudioStreamPlayer" parent="."]

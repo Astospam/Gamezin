@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgedmobew2j5u"
-path="res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"
+uid="uid://ttrwtex4xqy3"
+path="res://.godot/imported/Terreo.png-88a81c974e78a1d33414f929a03385eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png"
-dest_files=["res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"]
+source_file="res://Imagens/Cenários Jogo/Terreo.png"
+dest_files=["res://.godot/imported/Terreo.png-88a81c974e78a1d33414f929a03385eb.ctex"]
 
 [params]
 

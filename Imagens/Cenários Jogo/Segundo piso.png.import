@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgedmobew2j5u"
-path="res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"
+uid="uid://nywfvphd5w5p"
+path="res://.godot/imported/Segundo piso.png-236f0f00e5462365b8aff5d32615d383.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png"
-dest_files=["res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"]
+source_file="res://Imagens/Cenários Jogo/Segundo piso.png"
+dest_files=["res://.godot/imported/Segundo piso.png-236f0f00e5462365b8aff5d32615d383.ctex"]
 
 [params]
 

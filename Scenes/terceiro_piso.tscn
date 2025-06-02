@@ -26,7 +26,7 @@ metadata/Lugar = "elevador_3"
 
 [node name="Acesso2" parent="Background" instance=ExtResource("2_0erqr")]
 position = Vector2(781, 401)
-rotation = -0.084854
+rotation = -0.000817646
 metadata/Lugar = "segundo_piso"
 
 [node name="CollisionShape2D" parent="Background/Acesso2" index="0"]
@@ -40,44 +40,7 @@ offset_bottom = 63.9274
 rotation = -0.00452365
 text = "Segundo Piso"
 
-[node name="Acesso3" parent="Background" instance=ExtResource("2_0erqr")]
-position = Vector2(1329, 709)
-rotation = 0.000492083
-metadata/Lugar = "gamelab"
-
-[node name="CollisionShape2D" parent="Background/Acesso3" index="0"]
-position = Vector2(118.27, 27.2042)
-
-[node name="Label" parent="Background/Acesso3" index="1"]
-offset_left = 28.971
-offset_top = -6.13844
-offset_right = 302.971
-offset_bottom = 120.862
-rotation = -0.00452365
-text = "Gamelab
-"
-
-[node name="Acesso4" parent="Background" instance=ExtResource("2_0erqr")]
-position = Vector2(33, 707)
-rotation = -0.000401884
-scale = Vector2(1, 1)
-metadata/Lugar = "corredor_janela"
-
-[node name="CollisionShape2D" parent="Background/Acesso4" index="0"]
-position = Vector2(118.27, 27.2042)
-
-[node name="Label" parent="Background/Acesso4" index="1"]
-offset_left = 2.00321
-offset_top = -7.99925
-offset_right = 276.003
-offset_bottom = 119.001
-rotation = -0.00452365
-text = "Corredor
-"
-
 [node name="Hud" parent="Background" instance=ExtResource("4_wisyl")]
 
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]
-[editable path="Background/Acesso3"]
-[editable path="Background/Acesso4"]

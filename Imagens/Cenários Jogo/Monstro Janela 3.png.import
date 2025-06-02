@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgedmobew2j5u"
-path="res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"
+uid="uid://bbtvnvqq8knpr"
+path="res://.godot/imported/Monstro Janela 3.png-d1213682b48e874a6aced5adf0130cbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png"
-dest_files=["res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"]
+source_file="res://Imagens/Cenários Jogo/Monstro Janela 3.png"
+dest_files=["res://.godot/imported/Monstro Janela 3.png-d1213682b48e874a6aced5adf0130cbf.ctex"]
 
 [params]
 

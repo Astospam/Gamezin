@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs02ko1j63dev"]
+
+[ext_resource type="Texture2D" uid="uid://c3krs1wxc2ca3" path="res://Imagens/Cenários Jogo/Primeiro piso.png" id="1_1dmfg"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_844yn"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_844yn"]
+
+[node name="PrimeiroPiso" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1dmfg")
+
+[node name="Acesso2" parent="Background" instance=ExtResource("2_844yn")]
+position = Vector2(70, 639)
+rotation = 0.000559926
+metadata/Lugar = "saida_incendio"
+
+[node name="Label" parent="Background/Acesso2" index="1"]
+offset_left = -99.0196
+offset_top = -34.9445
+offset_right = 265.98
+offset_bottom = 92.0555
+rotation = -0.000683159
+text = "Saída
+ de Incêndio"
+horizontal_alignment = 1
+
+[node name="Acesso" parent="Background" instance=ExtResource("2_844yn")]
+position = Vector2(75, 245)
+rotation = -0.0383972
+metadata/Lugar = "elevador_1"
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_844yn")]
+position = Vector2(692, 242)
+rotation = 0.0
+metadata/Lugar = "segundo_piso"
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = -57.9991
+offset_top = 1.05131
+offset_right = 216.001
+offset_bottom = 71.0513
+rotation = -0.00307388
+text = "Segundo Piso"
+
+[node name="Acesso4" parent="Background" instance=ExtResource("2_844yn")]
+position = Vector2(951, 465)
+rotation = 0.0
+metadata/Lugar = "terreo"
+
+[node name="Label" parent="Background/Acesso4" index="1"]
+offset_left = 2.00003
+offset_top = 1.00001
+offset_right = 276.0
+rotation = -0.00307388
+text = "Térreo"
+
+[node name="Hud" parent="Background" instance=ExtResource("3_844yn")]
+
+[editable path="Background/Acesso2"]
+[editable path="Background/Acesso"]
+[editable path="Background/Acesso3"]
+[editable path="Background/Acesso4"]

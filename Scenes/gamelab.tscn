@@ -29,7 +29,7 @@ text = "Computador"
 [node name="Acesso2" parent="Background" instance=ExtResource("2_tcwrq")]
 position = Vector2(1060, 763)
 rotation = -0.000773251
-metadata/Lugar = "terceiro_piso"
+metadata/Lugar = "segundo_piso"
 
 [node name="CollisionShape2D" parent="Background/Acesso2" index="0"]
 position = Vector2(80.9529, 61.0627)
@@ -40,7 +40,7 @@ offset_top = 27.9568
 offset_right = 221.979
 offset_bottom = 97.9568
 rotation = 0.00020021
-text = "Terceiro Piso"
+text = "Segundo Piso"
 
 [node name="Hud" parent="Background" instance=ExtResource("3_tcwrq")]
 

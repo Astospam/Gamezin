@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dfbqnu7svim3t"
+path="res://.godot/imported/demonio recepcao audiocue.ogg-857c849234240e23c5cb9814bf01a744.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/demonio recepcao audiocue.ogg"
+dest_files=["res://.godot/imported/demonio recepcao audiocue.ogg-857c849234240e23c5cb9814bf01a744.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

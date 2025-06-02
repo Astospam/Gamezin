@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgedmobew2j5u"
-path="res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"
+uid="uid://bokgj3ioyyec"
+path="res://.godot/imported/Elevador Térreo - porta aberta.png-02e837d61c08a5254bda846808540b1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png"
-dest_files=["res://.godot/imported/Piso 3 - Elevador.png-eb0b3a2664eab31c3c736a2a59839f16.ctex"]
+source_file="res://Imagens/Cenários Jogo/Elevador Térreo - porta aberta.png"
+dest_files=["res://.godot/imported/Elevador Térreo - porta aberta.png-02e837d61c08a5254bda846808540b1c.ctex"]
 
 [params]
 

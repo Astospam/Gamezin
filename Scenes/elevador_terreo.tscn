@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqtx75wrrtpx3"]
+
+[ext_resource type="Texture2D" uid="uid://fdevknvfev2h" path="res://Imagens/Cenários Jogo/Elevador Térreo.png" id="1_echyy"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_mqtbb"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_mqtbb"]
+
+[node name="ElevadorTerreo" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_echyy")
+
+[node name="Acesso" parent="Background" instance=ExtResource("2_mqtbb")]
+position = Vector2(1298, 785)
+rotation = 0.0
+metadata/Lugar = "terreo"
+
+[node name="Label" parent="Background/Acesso" index="1"]
+offset_left = 5.99998
+offset_top = 0.999993
+offset_right = 284.0
+offset_bottom = 128.0
+rotation = -0.000727494
+text = "Térreo
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Acesso2" parent="Background" instance=ExtResource("2_mqtbb")]
+position = Vector2(202, 476)
+rotation = 0.0
+metadata/Lugar = "segundo_piso"
+
+[node name="Label" parent="Background/Acesso2" index="1"]
+offset_left = -58.0028
+offset_top = 0.823503
+offset_right = 219.997
+offset_bottom = 70.8235
+rotation = 0.00654254
+text = "Segundo Piso"
+metadata/_edit_use_anchors_ = true
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_mqtbb")]
+position = Vector2(201, 642)
+rotation = 0.0
+metadata/Lugar = "primeiro_piso"
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = -57.9928
+offset_top = -1.35311
+offset_right = 220.007
+offset_bottom = 68.6469
+rotation = 0.00654254
+text = "Primeiro Piso"
+
+[node name="Acesso4" parent="Background" instance=ExtResource("2_mqtbb")]
+position = Vector2(200, 311)
+rotation = 0.0
+metadata/Lugar = "terceiro_piso"
+
+[node name="Label" parent="Background/Acesso4" index="1"]
+offset_left = -58.0028
+offset_top = 0.823503
+offset_right = 219.997
+offset_bottom = 70.8235
+rotation = 0.00654254
+text = "Terceiro Piso"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hud" parent="Background" instance=ExtResource("3_mqtbb")]
+
+[editable path="Background/Acesso"]
+[editable path="Background/Acesso2"]
+[editable path="Background/Acesso3"]
+[editable path="Background/Acesso4"]

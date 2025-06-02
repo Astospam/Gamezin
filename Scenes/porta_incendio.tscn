@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bskh7jctqnp0n"]
+
+[ext_resource type="Texture2D" uid="uid://csaeo5vv761eq" path="res://Imagens/Cenários Jogo/Porta de incêndio.png" id="1_4vfii"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_b36fg"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_8kvu4"]
+
+[node name="PortaIncendio" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_4vfii")
+
+[node name="Acesso3" parent="Background" instance=ExtResource("2_b36fg")]
+position = Vector2(1329, 709)
+rotation = 0.000492083
+metadata/Lugar = "saida_incendio"
+
+[node name="CollisionShape2D" parent="Background/Acesso3" index="0"]
+position = Vector2(118.27, 27.2042)
+
+[node name="Label" parent="Background/Acesso3" index="1"]
+offset_left = -19.0183
+offset_top = -36.9906
+offset_right = 254.981
+offset_bottom = 155.009
+rotation = -0.00452365
+text = "Saida 
+de Incêndio
+"
+horizontal_alignment = 1
+
+[node name="Hud" parent="." instance=ExtResource("3_8kvu4")]
+
+[editable path="Background/Acesso3"]
