@@ -69,3 +69,4 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if Global.dopel == 2 and event.pressed:
 			print("morreu dopel janela")
 			Global.morrer()
+			return

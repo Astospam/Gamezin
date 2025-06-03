@@ -5,6 +5,8 @@ extends Node
 @onready var playerj = $JanelaSound
 @onready var player_ambi = $Ambient
 @onready var player_radio = $Radio
+@onready var player_elevador = $ElevadorSound
+@onready var player_invasor = $Diabo
 
 func tocar_recep(volume: float):
 	playerr.stream = load("res://Audios/Sons/demonio recepcao audiocue.ogg")
@@ -38,6 +40,7 @@ func tocar_radio():
 		2:
 			player_radio.stream = load("res://Audios/Sons/Áudio Noite 2.ogg")
 		3:
+			await get_tree().create_timer(0.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Locutora dia 3 completo.ogg")
 		4:
 			player_radio.stream = load("res://Audios/Sons/Áudio noite 4.ogg")
@@ -61,3 +64,30 @@ func stop_all():
 	playerr.stop()
 	playerd.stop()
 	player_ambi.stop()
+	player_elevador.stop()
+	player_invasor.stop()
+	
+func tocar_elevador(volume: float):
+	player_elevador.stream = load("res://Audios/Sons/audio cue elevador.ogg")
+	player_elevador.volume_db = volume
+	if (not player_elevador.playing):
+		player_elevador.play(2.0)
+		
+func elevador_volume(volume: float):
+	player_elevador.volume_db = volume
+	
+func elevador_stop():
+	player_elevador.stop()
+	
+func invasor_tocar():
+	player_invasor.stream = load("res://Audios/Sons/Demonio-pc.ogg")
+	if (not player_invasor.playing):
+		print("playando")
+		radio_volume(-80.0)
+		player_invasor.stream.loop = true
+		player_invasor.play()
+
+func invasor_stop():
+	print("stopando")
+	player_invasor.stop()
+	radio_volume(Global.volume_radio)

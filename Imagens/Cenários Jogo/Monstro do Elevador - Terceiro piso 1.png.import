@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://gqn5vpr0y0q6"
+path="res://.godot/imported/Monstro do Elevador - Terceiro piso 1.png-77723b19299a7002ab02c5820e36458d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/Cenários Jogo/Monstro do Elevador - Terceiro piso 1.png"
+dest_files=["res://.godot/imported/Monstro do Elevador - Terceiro piso 1.png-77723b19299a7002ab02c5820e36458d.ctex"]
 
 [params]
 

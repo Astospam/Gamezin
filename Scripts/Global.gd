@@ -3,11 +3,15 @@ extends Node
 var tempo_decorrido: float = 1260.0
 var pausado: bool = false
 var local = "computador"
+var prevlocal = ""
 var noite = 1
-var ultnoite = 2
+var ultnoite = 3
 var volume_radio = 0
 var volume_recep = 0
 var volume_janela = 0
+var volume_elevador = 0
+var pongon = false
+var resetando = false
 
 const ter = ["terreo", "recepcao", "elevador_terreo"]
 const pis1 = ["saida_incendio", "porta_incendio", "primeiro_piso", "elevador_1"]
@@ -47,6 +51,26 @@ var janela_pause = false
 #state2 - Está
 #state3 - Entrando
 #state4 - Dentro
+
+
+var elevador: int = 0
+var elevador_prob = 0.6
+var elevador_cd = 80.0
+var elevador_time = 0.0
+var elevador_answer = 7.0
+var elevador_walk = 14.0
+var elevador_local = "elevador"
+var elevador_varia = 0
+#
+
+var invasor: int = 0
+var invasor_prob = 0.5
+var invasor_cd = 90.0
+var invasor_time = 0.0
+var invadindo = false
+var play_inv = false
+#
+
 func salvar_jogo():
 	var data = {
 		"ultnoite": ultnoite
@@ -88,7 +112,16 @@ func _process(delta):
 		if (janela == 4 and (local == "gamelab" or local == "computador")):
 			print("morte")
 			morrer()
+			
+		#ELEVADOR
+		elevador_cdr()
 				
+				
+		#INVASOR
+		invasor_cdr()
+		
+		if (resetando == true or invadindo == true):
+			SonsController.radio_volume(-80.0)
 		#TEMPO BÁSICO
 		if pausado == false:
 			if (dopel != 1):
@@ -97,6 +130,10 @@ func _process(delta):
 				dopel_time += delta
 			if (dopel != 2 and noite > 1 and janela_pause == false):
 				janela_time += delta
+			if (noite > 2):
+				elevador_time += delta
+				if (resetando == false):
+					invasor_time += delta
 			
 			tempo_decorrido += delta
 			if (tempo_decorrido >= 1440):
@@ -124,9 +161,9 @@ func comecar_noite(number_n: int):
 	SonsController.tocar_ambient()
 	monster_reception_set()
 	dopel_set()
-	dopel_prob = 0.2 + 0.1*(noite -2)
 	janela_set()
-	janela_prob = 0.5 + 0.1*(noite -2)
+	elevador_set()
+	invasor_set()
 
 
 #MONSTER RECEP###############################################################################
@@ -219,6 +256,9 @@ func dopel_proba():
 				elif monster_recep != 0:
 					dopel = 2
 					print("dopel janela")
+					SonsController.janela_tocar(volume_janela)
+					await get_tree().create_timer(3.5).timeout
+					SonsController.janela_stop()
 				elif janela != 0:
 					dopel = 1
 					SonsController.tocar_recep(volume_recep)
@@ -227,7 +267,12 @@ func dopel_proba():
 					dopel = [1, 2].pick_random()
 				if dopel == 1:
 					SonsController.tocar_recep(volume_recep)
-					print("dopel n seik")
+					print("dopel porta")
+				else:
+					SonsController.janela_tocar(volume_janela)
+					await get_tree().create_timer(3.5).timeout
+					SonsController.janela_stop()
+					print("dopel janela")
 				dopel_prob = 0.2 + 0.1*(noite -2)
 			else:
 				dopel_prob += 0.1
@@ -247,10 +292,13 @@ func dopel_set():
 	dopel = 0
 	dopel_time = 0.0
 	dopel_cd = 100.0 - (20*(noite-2))
+	dopel_prob = 0.2 + 0.1*(noite -2)
 	
 	
 
 #JANELA###########################################################################################
+##################################################################################################
+##################################################################################################
 func janela_cdr():
 	var recepla
 	match janela:
@@ -292,3 +340,109 @@ func janela_set():
 	janela_time = 0.0
 	janela_cd = 60.0 - (10*(noite-2))
 	janela_prob = 0.5 + 0.1*(noite -2)
+	
+
+#ELEVADOR#######################################################################################
+#############################################################################################
+#############################################################################################
+
+func elevador_cdr():
+	var recepil
+	match elevador:
+		0: recepil = elevador_cd
+		1, 2, 3, 4:
+			if (elevador_local != "elevador"):
+				recepil = elevador_walk
+			else:
+				recepil = elevador_answer
+	if (elevador_time >= recepil):
+		elevador_time = 0.0
+		elevador_proba()
+	
+	
+func elevador_proba():
+	print(tempo_decorrido)
+	match elevador:
+		0:
+			if randf() < elevador_prob:
+				var places = [1, 2, 3, 4]
+				elevador = places.pick_random()
+				elevador_prob = 0.5 + 0.1*(noite -3)
+				SonsController.tocar_elevador(volume_elevador)
+				await get_tree().create_timer(7).timeout
+				SonsController.elevador_stop()
+				print("monstro elevador")
+			else:
+				elevador_prob += 0.1
+				elevador_cd -= 20.0
+				print("nothing e")
+
+		1, 2, 3, 4:
+			if randf() < 1 - elevador_prob:
+				if (elevador_local != "elevador"):
+					elevador = 0
+					elevador_prob = 0.5 + 0.1*(noite -3)
+					elevador_local = "elevador"
+					print("elevador voltou")
+				else:
+					var locales = ["terceiro_piso", "saida_incendio", "corredor_janela"]
+					var n = [1,2]
+					elevador_local = locales.pick_random()
+					elevador_varia = n.pick_random()
+					print("elevador andou")
+					print(elevador_local)
+			else:
+				if (elevador_local != "elevador"):
+					var locales = ["terceiro_piso", "saida_incendio", "corredor_janela"]
+					var n = [1,2]
+					elevador_local = locales.pick_random()
+					elevador_varia = n.pick_random()
+					print("elevador andou")
+					print(elevador_local)
+				else:
+					elevador_prob += 0.1
+					print("elevador nothing")
+		
+func elevador_set():
+	elevador_local = "elevador"
+	elevador = 0
+	elevador_time = 0.0
+	elevador_prob = 0.5 + 0.1*(noite -3)
+	elevador_cd = 80 - 20*(noite-3)
+	elevador_local = "elevador"
+		
+		
+
+#INVASOR###########################################################################################
+##################################################################################################
+##################################################################################################
+func invasor_cdr():
+	var receplou
+	match invasor:
+		0: receplou = invasor_cd
+		_: receplou = 3000.0
+	if (invasor_time >= receplou):
+		invasor_time = 0.0
+		invasor_proba()
+
+func invasor_proba():
+	match invasor:
+		0:
+			if randf() < invasor_prob:
+				invasor += 1
+				invadindo = true
+				invasor_prob = 0.5 + 0.1*(noite -3)
+				SonsController.invasor_tocar()
+				print("invardindo")
+			else:
+				invasor_prob += 0.1
+				invasor_cd -= 15.0
+				print("nothing i")
+				print(invasor_prob)
+
+				
+func invasor_set():
+	invasor = 0
+	invasor_time = 0.0
+	invasor_cd = 15.0 - (15*(noite-3))
+	invasor_prob = 0.5 + 0.1*(noite -3)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://825gymddrj20"
+path="res://.godot/imported/wite.png-c0ac216f65ff7c46510bd8599756706b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/wite.png"
+dest_files=["res://.godot/imported/wite.png-c0ac216f65ff7c46510bd8599756706b.ctex"]
 
 [params]
 

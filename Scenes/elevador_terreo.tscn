@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqtx75wrrtpx3"]
+[gd_scene load_steps=5 format=3 uid="uid://bqtx75wrrtpx3"]
 
 [ext_resource type="Texture2D" uid="uid://fdevknvfev2h" path="res://Imagens/Cenários Jogo/Elevador Térreo.png" id="1_echyy"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_mqtbb"]
 [ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_mqtbb"]
+[ext_resource type="PackedScene" uid="uid://ck8sg3at7yihl" path="res://Scenes/fecha.tscn" id="4_1y2tr"]
 
 [node name="ElevadorTerreo" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1600.0
+offset_bottom = 900.0
 texture = ExtResource("1_echyy")
 
 [node name="Acesso" parent="Background" instance=ExtResource("2_mqtbb")]
@@ -68,6 +69,9 @@ text = "Terceiro Piso"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hud" parent="Background" instance=ExtResource("3_mqtbb")]
+
+[node name="Fecha" parent="Background" instance=ExtResource("4_1y2tr")]
+position = Vector2(1197, 461)
 
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]

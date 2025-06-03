@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df6fml7v42jvn"]
+
+[ext_resource type="Script" uid="uid://ctt1l2wmgjmfa" path="res://Scripts/elevador_control.gd" id="1_y2iu6"]
+
+[node name="ElevadorControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y2iu6")

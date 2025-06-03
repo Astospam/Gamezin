@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://fnrr2okph253"]
+[gd_scene load_steps=5 format=3 uid="uid://fnrr2okph253"]
 
 [ext_resource type="Texture2D" uid="uid://bgedmobew2j5u" path="res://Imagens/Cenários Jogo/Piso 3 - Elevador.png" id="1_l8pbw"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_hor6l"]
 [ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_hor6l"]
+[ext_resource type="PackedScene" uid="uid://ck8sg3at7yihl" path="res://Scenes/fecha.tscn" id="4_nte4h"]
 
 [node name="Elevador3" type="Node2D"]
 
@@ -68,6 +69,9 @@ text = "Segundo Piso"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hud" parent="Background" instance=ExtResource("3_hor6l")]
+
+[node name="Fecha" parent="Background" instance=ExtResource("4_nte4h")]
+position = Vector2(1197, 461)
 
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]

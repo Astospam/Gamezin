@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://b6r1x1d06d6t1"
+path="res://.godot/imported/balck.png-1ac126f87b8d94e0d8520a4194547778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/balck.png"
+dest_files=["res://.godot/imported/balck.png-1ac126f87b8d94e0d8520a4194547778.ctex"]
 
 [params]
 

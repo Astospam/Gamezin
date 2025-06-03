@@ -14,3 +14,8 @@ script = ExtResource("1_xrtcl")
 [node name="JanelaSound" type="AudioStreamPlayer" parent="."]
 
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
+
+[node name="ElevadorSound" type="AudioStreamPlayer" parent="."]
+
+[node name="Diabo" type="AudioStreamPlayer" parent="."]
+playback_type = 1

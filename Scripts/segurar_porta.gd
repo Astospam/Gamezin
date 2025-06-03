@@ -40,6 +40,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if (Global.dopel == 1):
 			print("morreu dopel")
 			Global.morrer()
+			return
 		if (back == "monster"):
 			progress.value += 1
 			if (progress.value >= progress.max_value):

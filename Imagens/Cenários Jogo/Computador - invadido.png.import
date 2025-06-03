@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://cyrqyt4rcp8pb"
+path="res://.godot/imported/Computador - invadido.png-d3514d7179a2f7698c26a75c352f56f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/Cenários Jogo/Computador - invadido.png"
+dest_files=["res://.godot/imported/Computador - invadido.png-d3514d7179a2f7698c26a75c352f56f6.ctex"]
 
 [params]
 

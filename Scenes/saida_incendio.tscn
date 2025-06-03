@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8uegx4pfblpb"]
+[gd_scene load_steps=5 format=3 uid="uid://b8uegx4pfblpb"]
 
 [ext_resource type="Texture2D" uid="uid://cq2beug4q4u5b" path="res://Imagens/Cenários Jogo/Corredor - saída de incêndio.png" id="1_i21it"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_y1j1r"]
 [ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_y1j1r"]
+[ext_resource type="PackedScene" uid="uid://df6fml7v42jvn" path="res://Scenes/elevador_control.tscn" id="4_wrqsw"]
 
 [node name="SaidaIncendio" type="Node2D"]
 
@@ -48,6 +49,8 @@ Incêndio
 horizontal_alignment = 1
 
 [node name="Hud" parent="Background" instance=ExtResource("3_y1j1r")]
+
+[node name="ElevadorControl" parent="Background" instance=ExtResource("4_wrqsw")]
 
 [editable path="Background/Acesso3"]
 [editable path="Background/Acesso4"]

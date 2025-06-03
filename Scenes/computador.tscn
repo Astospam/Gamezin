@@ -1,22 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6fyuyg7abgxp"]
+[gd_scene load_steps=23 format=3 uid="uid://b6fyuyg7abgxp"]
 
-[ext_resource type="Texture2D" uid="uid://c5dbwh7sn8cfm" path="res://Imagens/Cenários Jogo/Computador.png" id="1_jfdb7"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_x8vny"]
+[ext_resource type="Script" uid="uid://6iv0g25q4qcf" path="res://Scripts/pongy.gd" id="3_anmep"]
+[ext_resource type="Script" uid="uid://dch21sfx4tad3" path="res://Scripts/engine.gd" id="3_hcr37"]
+[ext_resource type="Texture2D" uid="uid://b6r1x1d06d6t1" path="res://Imagens/balck.png" id="3_x7cou"]
 [ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_x8vny"]
+[ext_resource type="Script" uid="uid://cig355x8c0cea" path="res://Scripts/paddle_left.gd" id="4_brotk"]
+[ext_resource type="Script" uid="uid://bcg1li5h4wbmu" path="res://Scripts/ball.gd" id="4_x7cou"]
+[ext_resource type="Script" uid="uid://dajhos7k0nx0k" path="res://Scripts/continue.gd" id="5_3qrhw"]
+[ext_resource type="Script" uid="uid://w4g7cpbagk7r" path="res://Scripts/paddle_right.gd" id="5_ao07d"]
+[ext_resource type="Texture2D" uid="uid://825gymddrj20" path="res://Imagens/wite.png" id="5_dx7wh"]
+[ext_resource type="FontFile" uid="uid://jqjuimpqswj8" path="res://Imagens/alegreya-sc/AlegreyaSC-Regular.ttf" id="6_uwkrc"]
+[ext_resource type="Script" uid="uid://bcme2eh8bgdqi" path="res://Scripts/menu.gd" id="7_uwkrc"]
+[ext_resource type="Script" uid="uid://bdp5k0m232mth" path="res://Scripts/restart.gd" id="13_1x6ed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfdb7"]
+size = Vector2(52, 65)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jfdb7"]
+load_path = "res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2tf6"]
+size = Vector2(301.1, 146.19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x6ed"]
+size = Vector2(301.1, 146.19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brotk"]
+size = Vector2(39, 143)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8vny"]
+radius = 22.2036
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7cou"]
+size = Vector2(1017.85, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao07d"]
+size = Vector2(988.21, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwkrc"]
+size = Vector2(44, 36)
 
 [node name="Computador" type="Node2D"]
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_jfdb7")
+[node name="Engine" type="Area2D" parent="."]
+position = Vector2(408, 259)
+script = ExtResource("3_hcr37")
 
-[node name="Acesso" parent="Background" instance=ExtResource("2_x8vny")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine"]
+position = Vector2(2, 4.5)
+shape = SubResource("RectangleShape2D_jfdb7")
+
+[node name="Background" type="TextureRect" parent="Engine"]
+offset_left = -408.0
+offset_top = -259.0
+offset_right = 1192.0
+offset_bottom = 641.0
+texture = SubResource("CompressedTexture2D_jfdb7")
+
+[node name="Acesso" parent="Engine/Background" instance=ExtResource("2_x8vny")]
 position = Vector2(774, 800)
 rotation = -0.000819962
 metadata/Lugar = "gamelab"
 
-[node name="Label" parent="Background/Acesso" index="1"]
+[node name="Label" parent="Engine/Background/Acesso" index="1"]
 offset_left = -7.00097
 offset_top = 0.994339
 offset_right = 185.999
@@ -25,6 +72,255 @@ rotation = -0.0075436
 text = "Gamelab
 "
 
-[node name="Hud" parent="Background" instance=ExtResource("3_x8vny")]
+[node name="Hud" parent="Engine/Background" instance=ExtResource("3_x8vny")]
 
-[editable path="Background/Acesso"]
+[node name="Engy" type="Node2D" parent="Engine"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Engine/Engy"]
+offset_left = -31.0
+offset_top = -241.0
+offset_right = 991.0
+offset_bottom = 298.0
+rotation = 0.00995708
+texture = ExtResource("3_x7cou")
+expand_mode = 1
+
+[node name="Continue" type="Area2D" parent="Engine/Engy/TextureRect"]
+position = Vector2(365.884, 187.366)
+rotation = -0.00955159
+script = ExtResource("5_3qrhw")
+metadata/Lugar = "gamelab"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Engy/TextureRect/Continue"]
+position = Vector2(80.6014, 34.448)
+shape = SubResource("RectangleShape2D_r2tf6")
+
+[node name="Label" type="Label" parent="Engine/Engy/TextureRect/Continue"]
+offset_left = -25.9898
+offset_top = 1.23754
+offset_right = 192.01
+offset_bottom = 128.238
+rotation = -0.0075436
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_uwkrc")
+theme_override_font_sizes/font_size = 45
+text = "Continuar
+"
+
+[node name="Novo Jogo" type="Area2D" parent="Engine/Engy/TextureRect"]
+position = Vector2(368.626, 362.348)
+rotation = -0.00940092
+script = ExtResource("7_uwkrc")
+metadata/noite = 1
+metadata/state = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Engy/TextureRect/Novo Jogo"]
+position = Vector2(80.6014, 34.448)
+shape = SubResource("RectangleShape2D_1x6ed")
+
+[node name="Label" type="Label" parent="Engine/Engy/TextureRect/Novo Jogo"]
+offset_left = 17.0
+offset_top = -1.0
+offset_right = 228.0
+offset_bottom = 69.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_uwkrc")
+theme_override_font_sizes/font_size = 45
+text = "Menu"
+
+[node name="Label2" type="Label" parent="Engine/Engy/TextureRect/Novo Jogo"]
+visible = false
+offset_left = 1.0
+offset_top = 50.0
+offset_right = 219.0
+offset_bottom = 120.0
+rotation = 0.00169743
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_uwkrc")
+theme_override_font_sizes/font_size = 30
+text = "Continuar"
+
+[node name="Pongy" type="Area2D" parent="Engine"]
+position = Vector2(-1, 71)
+script = ExtResource("3_anmep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Pongy"]
+position = Vector2(2, 4.5)
+shape = SubResource("RectangleShape2D_jfdb7")
+
+[node name="Pong" type="Node2D" parent="Engine/Pongy"]
+visible = false
+position = Vector2(-407, -330)
+scale = Vector2(1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Engine/Pongy/Pong"]
+offset_left = 376.0
+offset_top = 18.0
+offset_right = 1398.0
+offset_bottom = 556.0
+rotation = 0.00995708
+texture = ExtResource("3_x7cou")
+expand_mode = 1
+
+[node name="PaddleLeft" type="CharacterBody2D" parent="Engine/Pongy/Pong/TextureRect" groups=["paddles"]]
+position = Vector2(30.7367, 274.708)
+rotation = -0.00995708
+scale = Vector2(1, 1)
+collision_mask = 7
+script = ExtResource("4_brotk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/PaddleLeft"]
+position = Vector2(5.00003, 2.99997)
+shape = SubResource("RectangleShape2D_brotk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Engine/Pongy/Pong/TextureRect/PaddleLeft"]
+position = Vector2(6, 3.00003)
+scale = Vector2(0.0257999, 0.132499)
+texture = ExtResource("5_dx7wh")
+
+[node name="PaddleRight" type="CharacterBody2D" parent="Engine/Pongy/Pong/TextureRect" groups=["paddles"]]
+position = Vector2(985.809, 277.198)
+rotation = -0.0199142
+scale = Vector2(1, 1)
+collision_mask = 7
+script = ExtResource("5_ao07d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/PaddleRight"]
+position = Vector2(-2.97009, -3.02979)
+shape = SubResource("RectangleShape2D_brotk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Engine/Pongy/Pong/TextureRect/PaddleRight"]
+position = Vector2(-2.98001, -2.02982)
+rotation = 0.00995708
+scale = Vector2(-0.0283697, 0.135362)
+texture = ExtResource("5_dx7wh")
+
+[node name="Ball" type="CharacterBody2D" parent="Engine/Pongy/Pong/TextureRect"]
+position = Vector2(227.707, 270.746)
+collision_layer = 2
+script = ExtResource("4_x7cou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Ball"]
+position = Vector2(1.99988, -0.0198975)
+shape = SubResource("CircleShape2D_x8vny")
+
+[node name="Sprite2D" type="Sprite2D" parent="Engine/Pongy/Pong/TextureRect/Ball"]
+position = Vector2(0.98996, -1.0098)
+rotation = 0.00995708
+scale = Vector2(-0.0315963, 0.0425327)
+texture = ExtResource("5_dx7wh")
+
+[node name="Walls" type="StaticBody2D" parent="Engine/Pongy/Pong/TextureRect"]
+collision_mask = 2
+
+[node name="TopWall" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls"]
+position = Vector2(504.145, 22.7698)
+rotation = -0.00898998
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls"]
+position = Vector2(509.501, 548.914)
+rotation = -0.00904479
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ao07d")
+
+[node name="Walls2" type="StaticBody2D" parent="Engine/Pongy/Pong/TextureRect"]
+scale = Vector2(1, 1)
+collision_layer = 4
+
+[node name="TopWall2" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls2"]
+position = Vector2(949.641, 260.557)
+rotation = -1.58069
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="TopWall5" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls2"]
+position = Vector2(67.5756, 258.34)
+rotation = -1.58195
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="Walls3" type="StaticBody2D" parent="Engine/Pongy/Pong/TextureRect" groups=["reset"]]
+scale = Vector2(1, 1)
+collision_layer = 7
+collision_mask = 7
+
+[node name="TopWall3" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls3"]
+position = Vector2(1016.2, 315.898)
+rotation = -1.58195
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="TopWall4" type="CollisionShape2D" parent="Engine/Pongy/Pong/TextureRect/Walls3"]
+position = Vector2(4.02113, 202.97)
+rotation = -1.58069
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="Acesso" parent="Engine/Pongy/Pong" instance=ExtResource("2_x8vny")]
+position = Vector2(121, 276)
+rotation = -0.00163992
+scale = Vector2(1, 1)
+metadata/Lugar = "computador"
+
+[node name="Label" parent="Engine/Pongy/Pong/Acesso" index="1"]
+offset_left = -7.00097
+offset_top = 0.994339
+offset_right = 185.999
+offset_bottom = 127.994
+rotation = -0.0075436
+text = "Voltar"
+
+[node name="Restart" type="Area2D" parent="."]
+position = Vector2(407, 581)
+script = ExtResource("13_1x6ed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Restart"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_uwkrc")
+
+[node name="Bliack" type="TextureRect" parent="Restart"]
+visible = false
+offset_left = -32.0
+offset_top = -562.0
+offset_right = 991.0
+offset_bottom = 23.0
+texture = ExtResource("3_x7cou")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Restart/Bliack"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 280.0
+offset_right = 625.0
+offset_bottom = 407.0
+rotation = -0.0075436
+theme_override_colors/font_color = Color(0.558604, 0.0380295, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_uwkrc")
+theme_override_font_sizes/font_size = 45
+text = "Reiniciando...
+"
+
+[connection signal="input_event" from="Engine" to="Engine" method="_on_input_event"]
+[connection signal="input_event" from="Engine/Engy/TextureRect/Continue" to="Engine/Engy/TextureRect/Continue" method="_on_input_event"]
+[connection signal="mouse_entered" from="Engine/Engy/TextureRect/Continue" to="Engine/Engy/TextureRect/Continue" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Engine/Engy/TextureRect/Continue" to="Engine/Engy/TextureRect/Continue" method="_on_mouse_exited"]
+[connection signal="input_event" from="Engine/Engy/TextureRect/Novo Jogo" to="Engine/Engy/TextureRect/Novo Jogo" method="_on_input_event"]
+[connection signal="mouse_entered" from="Engine/Engy/TextureRect/Novo Jogo" to="Engine/Engy/TextureRect/Novo Jogo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Engine/Engy/TextureRect/Novo Jogo" to="Engine/Engy/TextureRect/Novo Jogo" method="_on_mouse_exited"]
+[connection signal="input_event" from="Engine/Pongy" to="Engine/Pongy" method="_on_input_event"]
+[connection signal="input_event" from="Restart" to="Restart" method="_on_input_event"]
+
+[editable path="Engine/Background/Acesso"]
+[editable path="Engine/Pongy/Pong/Acesso"]

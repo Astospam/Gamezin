@@ -44,5 +44,10 @@ text = "Segundo Piso"
 
 [node name="Hud" parent="Background" instance=ExtResource("3_tcwrq")]
 
+[node name="Control" type="Control" parent="Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]

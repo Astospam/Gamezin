@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1qvjlo20yerb"]
+[gd_scene load_steps=6 format=3 uid="uid://b1qvjlo20yerb"]
 
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_0erqr"]
 [ext_resource type="Texture2D" uid="uid://cgenlrpx4sugy" path="res://Imagens/Cenários Jogo/Terceiro piso.png" id="2_yde7c"]
-[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="4_wisyl"]
+[ext_resource type="PackedScene" uid="uid://df6fml7v42jvn" path="res://Scenes/elevador_control.tscn" id="4_wisyl"]
+[ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="5_qq3a5"]
 
 [sub_resource type="GDScript" id="GDScript_yde7c"]
 script/source = "extends Node2D
@@ -40,7 +41,9 @@ offset_bottom = 63.9274
 rotation = -0.00452365
 text = "Segundo Piso"
 
-[node name="Hud" parent="Background" instance=ExtResource("4_wisyl")]
+[node name="Hud" parent="Background" instance=ExtResource("5_qq3a5")]
+
+[node name="ElevadorControl" parent="Background" instance=ExtResource("4_wisyl")]
 
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]

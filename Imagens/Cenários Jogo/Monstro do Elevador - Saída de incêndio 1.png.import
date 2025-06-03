@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://jtfh83gb8h0v"
+path="res://.godot/imported/Monstro do Elevador - Saída de incêndio 1.png-c97561efaedfa7c28a3aeb484fcb7302.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/Cenários Jogo/Monstro do Elevador - Saída de incêndio 1.png"
+dest_files=["res://.godot/imported/Monstro do Elevador - Saída de incêndio 1.png-c97561efaedfa7c28a3aeb484fcb7302.ctex"]
 
 [params]
 

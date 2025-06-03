@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhuaiewjxtp3a"
+path="res://.godot/imported/audio cue elevador.ogg-138dce2f5412f862beb65f4d469d47e2.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/audio cue elevador.ogg"
+dest_files=["res://.godot/imported/audio cue elevador.ogg-138dce2f5412f862beb65f4d469d47e2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

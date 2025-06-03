@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn23qsowjq4n"
-path="res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"
+uid="uid://cm203bkoxcku4"
+path="res://.godot/imported/Monstro do Elevador - Corredor gamelab.png-27dc0bba3052a8347656719248323b68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagens/Cenários Jogo/Computador.png"
-dest_files=["res://.godot/imported/Computador.png-b5d9718f4456f0c074c50751fcb7d171.ctex"]
+source_file="res://Imagens/Cenários Jogo/Monstro do Elevador - Corredor gamelab.png"
+dest_files=["res://.godot/imported/Monstro do Elevador - Corredor gamelab.png-27dc0bba3052a8347656719248323b68.ctex"]
 
 [params]
 
