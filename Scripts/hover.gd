@@ -60,45 +60,45 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					"elevador_3":
 						if (Global.elevador_local == "terceiro_piso" and Global.elevador_varia == 1):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"terreo":
 						var eleve = elevadores.duplicate()
 						eleve.erase("elevador_terreo")
 						if (Global.prevlocal in eleve):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"primeiro_piso":
 						var eleve1 = elevadores.duplicate()
 						eleve1.erase("elevador_1")
 						if ((Global.elevador_local == "saida_incendio" and Global.elevador_varia == 2 and Global.prevlocal == "saida_incendio") or (Global.prevlocal in eleve1)):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"segundo_piso":
 						var eleve2 = elevadores.duplicate()
 						eleve2.erase("elevador_2")
 						if ((Global.elevador_local == "terceiro_piso" and Global.elevador_varia == 2 and Global.prevlocal == "terceiro_piso") or (Global.prevlocal in eleve2)):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"terceiro_piso":
 						var eleve3 = elevadores.duplicate()
 						eleve3.erase("elevador_3")
 						if (Global.prevlocal in eleve3):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"janela":
 						if (Global.elevador_local == "corredor_janela"):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					"porta_incendio":
 						if (Global.elevador_local == "saida_incendio" and Global.elevador_varia == 1):
 							print("morreu elevador")
-							Global.morrer()
+							Global.morrer(2)
 							return
 					
 			Global.pongon = false	

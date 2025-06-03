@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="21.5"
+run/main_scene="uid://dgwtw1gkal8qy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 SonsController="*res://Scenes/sons_controller.tscn"
+Transicao="*res://Scenes/transicao.tscn"
 
 [display]
 

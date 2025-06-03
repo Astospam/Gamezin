@@ -33,5 +33,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		else:
 			Global.local = "menu"
 			SonsController.stop_all()
-			get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+			Global.reset_game()
 		

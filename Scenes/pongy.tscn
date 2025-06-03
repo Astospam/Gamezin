@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0rheecefj8ma"]
+
+[ext_resource type="Script" uid="uid://6iv0g25q4qcf" path="res://Scripts/pongy.gd" id="1_sac1e"]
+[ext_resource type="Texture2D" uid="uid://b6r1x1d06d6t1" path="res://Imagens/balck.png" id="2_5w1l1"]
+[ext_resource type="Script" uid="uid://cig355x8c0cea" path="res://Scripts/paddle_left.gd" id="3_0hqen"]
+[ext_resource type="Texture2D" uid="uid://825gymddrj20" path="res://Imagens/wite.png" id="4_pci6m"]
+[ext_resource type="Script" uid="uid://w4g7cpbagk7r" path="res://Scripts/paddle_right.gd" id="5_ajggi"]
+[ext_resource type="Script" uid="uid://bcg1li5h4wbmu" path="res://Scripts/ball.gd" id="6_de3u3"]
+[ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="7_ujdtr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfdb7"]
+size = Vector2(52, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brotk"]
+size = Vector2(39, 143)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8vny"]
+radius = 22.2036
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7cou"]
+size = Vector2(1017.85, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao07d"]
+size = Vector2(988.21, 20)
+
+[node name="Pongy" type="Area2D"]
+visible = false
+script = ExtResource("1_sac1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 4.5)
+shape = SubResource("RectangleShape2D_jfdb7")
+
+[node name="Pong" type="Node2D" parent="."]
+visible = false
+position = Vector2(-407, -330)
+
+[node name="TextureRect" type="TextureRect" parent="Pong"]
+offset_left = 376.0
+offset_top = 18.0
+offset_right = 1398.0
+offset_bottom = 556.0
+rotation = 0.00995708
+texture = ExtResource("2_5w1l1")
+expand_mode = 1
+
+[node name="PaddleLeft" type="CharacterBody2D" parent="Pong/TextureRect" groups=["paddles"]]
+position = Vector2(30.7367, 274.708)
+rotation = -0.00995708
+collision_mask = 7
+script = ExtResource("3_0hqen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pong/TextureRect/PaddleLeft"]
+position = Vector2(5.00003, 2.99997)
+shape = SubResource("RectangleShape2D_brotk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pong/TextureRect/PaddleLeft"]
+position = Vector2(6, 3.00003)
+scale = Vector2(0.0257999, 0.132499)
+texture = ExtResource("4_pci6m")
+
+[node name="PaddleRight" type="CharacterBody2D" parent="Pong/TextureRect" groups=["paddles"]]
+position = Vector2(985.809, 277.198)
+rotation = -0.0199142
+collision_mask = 7
+script = ExtResource("5_ajggi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pong/TextureRect/PaddleRight"]
+position = Vector2(-2.97009, -3.02979)
+shape = SubResource("RectangleShape2D_brotk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pong/TextureRect/PaddleRight"]
+position = Vector2(-2.98001, -2.02982)
+rotation = 0.00995708
+scale = Vector2(-0.0283697, 0.135362)
+texture = ExtResource("4_pci6m")
+
+[node name="Ball" type="CharacterBody2D" parent="Pong/TextureRect"]
+position = Vector2(227.707, 270.746)
+collision_layer = 2
+script = ExtResource("6_de3u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pong/TextureRect/Ball"]
+position = Vector2(1.99988, -0.0198975)
+shape = SubResource("CircleShape2D_x8vny")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pong/TextureRect/Ball"]
+position = Vector2(0.98996, -1.0098)
+rotation = 0.00995708
+scale = Vector2(-0.0315963, 0.0425327)
+texture = ExtResource("4_pci6m")
+
+[node name="Walls" type="StaticBody2D" parent="Pong/TextureRect"]
+collision_mask = 2
+
+[node name="TopWall" type="CollisionShape2D" parent="Pong/TextureRect/Walls"]
+position = Vector2(504.145, 22.7698)
+rotation = -0.00898998
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Pong/TextureRect/Walls"]
+position = Vector2(509.501, 548.914)
+rotation = -0.00904479
+shape = SubResource("RectangleShape2D_ao07d")
+
+[node name="Walls2" type="StaticBody2D" parent="Pong/TextureRect"]
+collision_layer = 4
+
+[node name="TopWall2" type="CollisionShape2D" parent="Pong/TextureRect/Walls2"]
+position = Vector2(949.641, 260.557)
+rotation = -1.58069
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="TopWall5" type="CollisionShape2D" parent="Pong/TextureRect/Walls2"]
+position = Vector2(67.5756, 258.34)
+rotation = -1.58195
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="Walls3" type="StaticBody2D" parent="Pong/TextureRect" groups=["reset"]]
+collision_layer = 7
+collision_mask = 7
+
+[node name="TopWall3" type="CollisionShape2D" parent="Pong/TextureRect/Walls3"]
+position = Vector2(1016.2, 315.898)
+rotation = -1.58195
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="TopWall4" type="CollisionShape2D" parent="Pong/TextureRect/Walls3"]
+position = Vector2(4.02113, 202.97)
+rotation = -1.58069
+shape = SubResource("RectangleShape2D_x7cou")
+
+[node name="Acesso" parent="Pong" instance=ExtResource("7_ujdtr")]
+position = Vector2(121, 276)
+rotation = -0.00163992
+metadata/Lugar = "computador"
+
+[node name="Label" parent="Pong/Acesso" index="1"]
+offset_left = -7.00097
+offset_top = 0.994339
+offset_right = 185.999
+offset_bottom = 127.994
+rotation = -0.0075436
+text = "Voltar"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+
+[editable path="Pong/Acesso"]

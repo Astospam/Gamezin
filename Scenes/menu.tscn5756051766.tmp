@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgwtw1gkal8qy"]
+[gd_scene load_steps=15 format=3 uid="uid://dgwtw1gkal8qy"]
 
-[ext_resource type="Script" uid="uid://y24kmm4b2pb8" path="res://Scripts/menuss.gd" id="1_8ph6h"]
 [ext_resource type="Texture2D" uid="uid://pj0pdshpna4i" path="res://Imagens/Cenários Jogo/Menu 1.png" id="1_q3rjx"]
 [ext_resource type="Texture2D" uid="uid://lmwngorb5hnf" path="res://Imagens/Cenários Jogo/Menu 2.png" id="2_6swd7"]
 [ext_resource type="Script" uid="uid://ch4jm742co8" path="res://Scripts/engineiro.gd" id="2_g8i7c"]
@@ -19,26 +18,27 @@
 size = Vector2(90, 118)
 
 [node name="Menu" type="Node2D"]
-script = ExtResource("1_8ph6h")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1599.0
 offset_bottom = 897.0
 texture = ExtResource("1_q3rjx")
 
-[node name="Engineiro" type="Area2D" parent="."]
+[node name="Engineiro" type="Area2D" parent="Background"]
 script = ExtResource("2_g8i7c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Engineiro"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Engineiro"]
 position = Vector2(46, 374)
 shape = SubResource("RectangleShape2D_1by5w")
 
-[node name="Enginer" type="TextureRect" parent="Engineiro"]
+[node name="Enginer" type="TextureRect" parent="Background/Engineiro"]
+visible = false
 offset_right = 1597.0
 offset_bottom = 897.0
 texture = ExtResource("2_6swd7")
 
-[node name="Creditos" type="TextureButton" parent="Engineiro/Enginer"]
+[node name="Creditos" type="TextureButton" parent="Background/Engineiro/Enginer"]
+layout_mode = 0
 offset_left = 242.0
 offset_top = 258.0
 offset_right = 483.0
@@ -48,7 +48,8 @@ texture_hover = ExtResource("6_23t3j")
 stretch_mode = 0
 script = ExtResource("8_7qvly")
 
-[node name="NovoJogo" type="TextureButton" parent="Engineiro/Enginer"]
+[node name="NovoJogo" type="TextureButton" parent="Background/Engineiro/Enginer"]
+layout_mode = 0
 offset_left = 501.0
 offset_top = 395.0
 offset_right = 1382.0
@@ -58,7 +59,8 @@ texture_hover = ExtResource("4_rfqti")
 stretch_mode = 0
 script = ExtResource("5_6swd7")
 
-[node name="Projetos" type="TextureButton" parent="Engineiro/Enginer"]
+[node name="Projetos" type="TextureButton" parent="Background/Engineiro/Enginer"]
+layout_mode = 0
 offset_left = 241.0
 offset_top = 204.0
 offset_right = 492.0
@@ -68,16 +70,17 @@ texture_hover = ExtResource("8_5ti5v")
 stretch_mode = 0
 script = ExtResource("11_rfqti")
 
-[node name="X" type="Button" parent="Engineiro/Enginer"]
+[node name="X" type="Button" parent="Background/Engineiro/Enginer"]
+layout_mode = 0
 offset_left = 1337.0
 offset_top = 78.0
 offset_right = 1382.0
 offset_bottom = 113.0
 script = ExtResource("13_23t3j")
 
-[connection signal="input_event" from="Engineiro" to="Engineiro" method="_on_input_event"]
-[connection signal="pressed" from="Engineiro/Enginer/Creditos" to="Engineiro/Enginer/Creditos" method="_on_pressed"]
-[connection signal="toggled" from="Engineiro/Enginer/Creditos" to="Engineiro/Enginer/Creditos" method="_on_toggled"]
-[connection signal="pressed" from="Engineiro/Enginer/NovoJogo" to="Engineiro/Enginer/NovoJogo" method="_on_pressed"]
-[connection signal="pressed" from="Engineiro/Enginer/Projetos" to="Engineiro/Enginer/Projetos" method="_on_pressed"]
-[connection signal="pressed" from="Engineiro/Enginer/X" to="Engineiro/Enginer/X" method="_on_pressed"]
+[connection signal="input_event" from="Background/Engineiro" to="Background/Engineiro" method="_on_input_event"]
+[connection signal="pressed" from="Background/Engineiro/Enginer/Creditos" to="Background/Engineiro/Enginer/Creditos" method="_on_pressed"]
+[connection signal="toggled" from="Background/Engineiro/Enginer/Creditos" to="Background/Engineiro/Enginer/Creditos" method="_on_toggled"]
+[connection signal="pressed" from="Background/Engineiro/Enginer/NovoJogo" to="Background/Engineiro/Enginer/NovoJogo" method="_on_pressed"]
+[connection signal="pressed" from="Background/Engineiro/Enginer/Projetos" to="Background/Engineiro/Enginer/Projetos" method="_on_pressed"]
+[connection signal="pressed" from="Background/Engineiro/Enginer/X" to="Background/Engineiro/Enginer/X" method="_on_pressed"]

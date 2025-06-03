@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://bilx7x4ni46f7"]
+
+[ext_resource type="Script" uid="uid://l541qc3qqnxk" path="res://Scripts/transicao.gd" id="1_3q4mr"]
+[ext_resource type="Texture2D" uid="uid://b6r1x1d06d6t1" path="res://Imagens/balck.png" id="2_w76s5"]
+[ext_resource type="Texture2D" uid="uid://d3nykdhug0aot" path="res://Imagens/Monstro da Porta.png" id="3_bp74i"]
+[ext_resource type="Texture2D" uid="uid://cihakb8070qcu" path="res://Imagens/Monstro do Elevador sprite.png" id="4_hjdqs"]
+[ext_resource type="Texture2D" uid="uid://dbsruiaxn8naj" path="res://Imagens/Monstro janela sprite.png" id="5_hjdqs"]
+
+[sub_resource type="Animation" id="Animation_g8ifw"]
+resource_name = "fade"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.75, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3q4mr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w76s5"]
+_data = {
+&"RESET": SubResource("Animation_3q4mr"),
+&"fade": SubResource("Animation_g8ifw")
+}
+
+[sub_resource type="Animation" id="Animation_pmtrw"]
+resource_name = "jumpscare"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jumpscare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wmnb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jumpscare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_unppx"]
+_data = {
+&"RESET": SubResource("Animation_wmnb7"),
+&"jumpscare": SubResource("Animation_pmtrw")
+}
+
+[node name="Transicao" type="CanvasLayer"]
+script = ExtResource("1_3q4mr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w76s5")
+}
+
+[node name="Jumpscare" type="TextureRect" parent="."]
+visible = false
+offset_right = 1607.0
+offset_bottom = 906.0
+texture = ExtResource("2_w76s5")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Jumpscare"]
+visible = false
+layout_mode = 0
+offset_left = -740.0
+offset_top = -227.0
+offset_right = 2109.0
+offset_bottom = 1549.0
+texture = ExtResource("3_bp74i")
+
+[node name="TextureRect2" type="TextureRect" parent="Jumpscare"]
+visible = false
+layout_mode = 0
+offset_left = -457.0
+offset_top = -219.0
+offset_right = 2385.0
+offset_bottom = 1677.0
+texture = ExtResource("4_hjdqs")
+
+[node name="TextureRect3" type="TextureRect" parent="Jumpscare"]
+visible = false
+layout_mode = 0
+offset_left = -17.0
+offset_top = -50.0
+offset_right = 2422.0
+offset_bottom = 1229.0
+texture = ExtResource("5_hjdqs")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_unppx")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]

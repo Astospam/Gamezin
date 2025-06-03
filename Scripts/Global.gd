@@ -2,7 +2,7 @@ extends Node
 
 var tempo_decorrido: float = 1260.0
 var pausado: bool = false
-var local = "computador"
+var local = "menu"
 var prevlocal = ""
 var noite = 1
 var ultnoite = 5
@@ -12,6 +12,8 @@ var volume_janela = 0
 var volume_elevador = 0
 var pongon = false
 var resetando = false
+var engines_menu = false # Mantenha como 'false' para o estado inicial do menu
+var projetos = true     # Mantenha como 'true' para o estado inicial do menu
 
 const ter = ["terreo", "recepcao", "elevador_terreo"]
 const pis1 = ["saida_incendio", "porta_incendio", "primeiro_piso", "elevador_1"]
@@ -22,9 +24,9 @@ var monster_recep: int = 0
 var monster_recep_prob = 0.4
 var monster_recep_cd = 90.0
 var monster_recep_time = 0.0
-var monster_recep_answer = 9.0
+var monster_recep_answer = 7.5
 var monster_recep_walk = 18.0
-var monster_recep_local = "menu"
+var monster_recep_local = "fora"
 var monster_recep_aberta: bool = false
 #state1 - Na porta
 #state2 - entrou
@@ -69,6 +71,9 @@ var invasor_cd = 90.0
 var invasor_time = 0.0
 var invadindo = false
 var play_inv = false
+
+func _ready():
+	randomize()
 #
 
 func salvar_jogo():
@@ -98,7 +103,7 @@ func _process(delta):
 		#MONSTER RECEP
 		if (local == monster_recep_local or (monster_recep == 2 and local == "recepcao")):
 			print("morte")
-			morrer()
+			morrer(1)
 		monster_reception_cdr()
 		
 		#DOPEL
@@ -111,7 +116,7 @@ func _process(delta):
 		janela_cdr()
 		if (janela == 4 and (local == "gamelab" or local == "computador")):
 			print("morte")
-			morrer()
+			morrer(3)
 			
 		#ELEVADOR
 		elevador_cdr()
@@ -144,17 +149,27 @@ func _process(delta):
 func acabar_noite():
 	pausado = true
 	ultnoite += 1
-	call_deferred("comecar_noite", ultnoite)
+	if (ultnoite >= 6):
+		pausado = true
+		SonsController.stop_all()
+		local = "vitoria"
+		get_tree().change_scene_to_file("res://Scenes/vitoria.tscn")
+	else:
+		call_deferred("comecar_noite", ultnoite)
 	
-func morrer():
+func morrer(bixo: int):
 	pausado = true
 	SonsController.stop_all()
 	local = "morte"
-	get_tree().change_scene_to_file("res://Scenes/morte.tscn")
-	
+	# Não mude a cena aqui para a tela de morte, se a tela de morte for outro nó na mesma cena
+	# Se a tela de morte for uma cena separada, manteríamos isso.
+	# O ideal é que a tela de morte tenha um botão para chamar Global.reset_game()
+	Transicao.jumpscare(bixo)
+
 func comecar_noite(number_n: int):
 	randomize()
 	noite = number_n
+	ultnoite = noite
 	tempo_decorrido = 1260.0
 	pausado = false
 	SonsController.tocar_radio()
@@ -222,6 +237,7 @@ func monster_reception_set():
 	monster_recep = 0
 	monster_recep_time = 0.0
 	monster_recep_cd = 75.0 - (15*(noite-1))
+	monster_recep_aberta = false
 	noite_recep_prob()
 		
 func noite_recep_prob():
@@ -445,6 +461,72 @@ func invasor_proba():
 				
 func invasor_set():
 	invasor = 0
+	invadindo = false
 	invasor_time = 0.0
 	invasor_cd = 90 - (15*(noite-3))
 	invasor_prob = 0.5 + 0.1*(noite -3)
+
+func reset_game():
+	print("--- Executando Global.reset_game() ---")
+	# Variáveis de Estado Geral do Jogo
+	tempo_decorrido = 1260.0
+	pausado = false
+	local = "menu" # Garante que o estado seja 'menu'
+	prevlocal = ""
+	noite = 1
+	ultnoite = 1 # Começa da noite 1
+	volume_radio = 0
+	volume_recep = 0
+	volume_janela = 0
+	volume_elevador = 0
+	pongon = false
+	resetando = false
+	engines_menu = false # ESSENCIAL: Garante que o Enginer comece escondido
+	projetos = true     # ESSENCIAL: Garante que o botão 'Projetos' esteja habilitado (mas invisível com Enginer)
+	
+	# Variáveis dos monstros (redefinindo para o estado inicial da primeira noite/jogo)
+	monster_recep = 0
+	monster_recep_prob = 0.4
+	monster_recep_cd = 90.0
+	monster_recep_time = 0.0
+	monster_recep_answer = 7.5
+	monster_recep_walk = 18.0
+	monster_recep_local = "fora"
+	monster_recep_aberta = false
+	
+	dopel = 0
+	dopel_prob = 0.2
+	dopel_cd = 100.0
+	dopel_time = 0.0
+	dopel_stay_door = 7.0
+	dopel_stay_janela = 10.0
+	
+	janela = 0
+	janela_prob = 0.5
+	janela_cd = 60.0
+	janela_in = 20.0
+	janela_time = 0.0
+	janela_liberar = 0.0
+	janela_pause = false
+	
+	elevador = 0
+	elevador_prob = 0.6
+	elevador_cd = 80.0
+	elevador_time = 0.0
+	elevador_answer = 7.0
+	elevador_walk = 14.0
+	elevador_local = "elevador"
+	elevador_varia = 0
+	
+	invasor = 0
+	invasor_prob = 0.5
+	invasor_cd = 90.0
+	invasor_time = 0.0
+	invadindo = false
+	play_inv = false
+	
+	SonsController.stop_all() # Para todos os sons para começar "limpo"
+	
+	print("Variáveis globais redefinidas. Carregando cena de menu principal...")
+	# Carrega a cena de menu principal, que agora deverá se comportar como se o jogo tivesse acabado de iniciar.
+	get_tree().change_scene_to_file("res://Scenes/MENU.tscn")

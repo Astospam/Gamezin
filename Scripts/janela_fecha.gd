@@ -76,5 +76,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			pressionando = event.pressed  # true ao pressionar, false ao soltar
 		if Global.dopel == 2 and event.pressed:
 			print("morreu dopel janela")
-			Global.morrer()
+			Global.morrer(2)
 			return

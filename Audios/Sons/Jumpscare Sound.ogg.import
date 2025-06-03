@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://damh6jel8fpjh"
+path="res://.godot/imported/Jumpscare Sound.ogg-81c57a9c2e6e309298847fde4ef77fb6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/Jumpscare Sound.ogg"
+dest_files=["res://.godot/imported/Jumpscare Sound.ogg-81c57a9c2e6e309298847fde4ef77fb6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

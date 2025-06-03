@@ -19,3 +19,5 @@ script = ExtResource("1_xrtcl")
 
 [node name="Diabo" type="AudioStreamPlayer" parent="."]
 playback_type = 1
+
+[node name="Jumpscare" type="AudioStreamPlayer" parent="."]

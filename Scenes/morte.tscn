@@ -1,31 +1,31 @@
 [gd_scene load_steps=5 format=3 uid="uid://7fo86rg3r7sd"]
 
+[ext_resource type="Texture2D" uid="uid://bnb1o1o8atbug" path="res://Imagens/Cenários Jogo/Game over.png" id="1_axrhv"]
 [ext_resource type="Script" uid="uid://bcme2eh8bgdqi" path="res://Scripts/menu.gd" id="1_smhdt"]
 [ext_resource type="FontFile" uid="uid://jqjuimpqswj8" path="res://Imagens/alegreya-sc/AlegreyaSC-Regular.ttf" id="2_axrhv"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rplu7"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrbp5"]
-size = Vector2(301.1, 146.19)
+size = Vector2(658, 69.543)
 
 [node name="Morte" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1599.0
 offset_bottom = 897.0
-texture = SubResource("PlaceholderTexture2D_rplu7")
+texture = ExtResource("1_axrhv")
 
 [node name="Novo Jogo" type="Area2D" parent="TextureRect"]
-position = Vector2(721, 425)
+position = Vector2(782, 790)
 script = ExtResource("1_smhdt")
 metadata/noite = 1
 metadata/state = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Novo Jogo"]
-position = Vector2(80.6014, 34.448)
+position = Vector2(72, 34)
 shape = SubResource("RectangleShape2D_hrbp5")
 
 [node name="Label" type="Label" parent="TextureRect/Novo Jogo"]
+visible = false
 offset_left = 17.0
 offset_top = -1.0
 offset_right = 228.0
@@ -53,16 +53,17 @@ theme_override_font_sizes/font_size = 30
 text = "Continuar"
 
 [node name="Novo Jogo2" type="Area2D" parent="TextureRect"]
-position = Vector2(721, 588)
+position = Vector2(766, 660)
 script = ExtResource("1_smhdt")
 metadata/state = 1
 metadata/noite = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Novo Jogo2"]
-position = Vector2(80.6014, 34.448)
+position = Vector2(84, 72.7715)
 shape = SubResource("RectangleShape2D_hrbp5")
 
 [node name="Label" type="Label" parent="TextureRect/Novo Jogo2"]
+visible = false
 offset_left = -108.0
 offset_top = -31.0
 offset_right = 276.0
@@ -78,6 +79,7 @@ Novamente"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TextureRect/Novo Jogo2"]
+visible = false
 offset_left = -2.0
 offset_top = 39.0
 offset_right = 216.0

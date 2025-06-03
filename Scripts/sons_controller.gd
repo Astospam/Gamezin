@@ -7,6 +7,7 @@ extends Node
 @onready var player_radio = $Radio
 @onready var player_elevador = $ElevadorSound
 @onready var player_invasor = $Diabo
+@onready var player_jump = $Jumpscare
 
 func tocar_recep(volume: float):
 	playerr.stream = load("res://Audios/Sons/demonio recepcao audiocue.ogg")
@@ -37,15 +38,19 @@ func janela_volume(volume: float):
 func tocar_radio():
 	match Global.noite:
 		1:
+			await get_tree().create_timer(2.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Locutor dia 1 completo.ogg")
 		2:
+			await get_tree().create_timer(2.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Áudio Noite 2.ogg")
 		3:
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(2.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Locutora dia 3 completo.ogg")
 		4:
+			await get_tree().create_timer(2.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Áudio noite 4.ogg")
 		5:
+			await get_tree().create_timer(2.5).timeout
 			player_radio.stream = load("res://Audios/Sons/Cultista completo.ogg")
 	player_radio.play()
 
@@ -99,3 +104,10 @@ func pause_radio():
 
 func despause_radio():
 	player_radio.stream_paused = false
+
+func play_jumpscare():
+	player_jump.stream = load("res://Audios/Sons/Jumpscare Sound.ogg")
+	player_jump.play()
+	
+func stop_jumpscare():
+	player_jump.stop()

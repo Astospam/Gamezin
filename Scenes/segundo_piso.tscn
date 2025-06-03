@@ -44,7 +44,6 @@ text = "Primeiro Piso"
 [node name="Acesso5" parent="Background" instance=ExtResource("2_5gsjo")]
 position = Vector2(33, 625)
 rotation = -0.000401884
-scale = Vector2(1, 1)
 metadata/Lugar = "corredor_janela"
 
 [node name="CollisionShape2D" parent="Background/Acesso5" index="0"]
