@@ -54,3 +54,4 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			progress.value = 0
 			label.text = "Segurar Porta"
 			progress.visible = true
+			Global.monster_reception_set()

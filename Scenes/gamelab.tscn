@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpg7gkoa4dhdh"]
+[gd_scene load_steps=5 format=3 uid="uid://bpg7gkoa4dhdh"]
 
 [ext_resource type="Texture2D" uid="uid://c0he6g6knhvpm" path="res://Imagens/Cenários Jogo/Gamelab.png" id="1_lwmnv"]
 [ext_resource type="PackedScene" uid="uid://wxirmmbq7r5v" path="res://Scenes/acesso.tscn" id="2_tcwrq"]
 [ext_resource type="PackedScene" uid="uid://cskeg4svywmvm" path="res://Scenes/hud.tscn" id="3_tcwrq"]
+[ext_resource type="Script" uid="uid://bd4nrq53hv6re" path="res://Scripts/invader.gd" id="4_3gr3m"]
 
 [node name="Gamelab" type="Node2D"]
 
@@ -48,6 +49,7 @@ text = "Segundo Piso"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_3gr3m")
 
 [editable path="Background/Acesso"]
 [editable path="Background/Acesso2"]

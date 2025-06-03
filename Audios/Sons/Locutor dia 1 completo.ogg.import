@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4etlmhdnp005"
+path="res://.godot/imported/Locutor dia 1 completo.ogg-1e392f3de1e3ec2ac5e3a631639e1ebe.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/Sons/Locutor dia 1 completo.ogg"
+dest_files=["res://.godot/imported/Locutor dia 1 completo.ogg-1e392f3de1e3ec2ac5e3a631639e1ebe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

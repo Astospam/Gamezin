@@ -24,4 +24,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Global.pausado = true
 			eng.visible = true
 			acesso.visible = false
+			SonsController.pause_radio()
 		

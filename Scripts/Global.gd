@@ -5,7 +5,7 @@ var pausado: bool = false
 var local = "computador"
 var prevlocal = ""
 var noite = 1
-var ultnoite = 3
+var ultnoite = 5
 var volume_radio = 0
 var volume_recep = 0
 var volume_janela = 0
@@ -35,7 +35,7 @@ var dopel_prob = 0.2
 var dopel_cd = 100.0
 var dopel_time = 0.0
 var dopel_stay_door = 7.0
-var dopel_stay_janela = 0.0
+var dopel_stay_janela = 10.0
 #state1 - Na porta
 #state2 - Na janela
 
@@ -103,8 +103,8 @@ func _process(delta):
 		
 		#DOPEL
 		dopel_cdr()
-		if (not SonsController.playerd.playing):
-			if ((local == "recepcao" and dopel == 1) or (local == "janela" and dopel == 2)):
+		if ((local == "recepcao" and dopel == 1) or (local == "janela" and dopel == 2)):
+			if (not SonsController.playerd.playing):
 				SonsController.dopel_laugh()
 				
 		#JANELA
@@ -164,7 +164,7 @@ func comecar_noite(number_n: int):
 	janela_set()
 	elevador_set()
 	invasor_set()
-
+	SonsController.radio_volume(volume_radio)
 
 #MONSTER RECEP###############################################################################
 #############################################################################################
@@ -221,14 +221,14 @@ func monster_reception_set():
 	monster_recep_local = "fora"
 	monster_recep = 0
 	monster_recep_time = 0.0
-	monster_recep_cd = 90.0 - (15*(noite-1))
+	monster_recep_cd = 75.0 - (15*(noite-1))
 	noite_recep_prob()
 		
 func noite_recep_prob():
 	if (noite!=1):
-		monster_recep_prob = 0.5 + 0.1*(noite -2)
+		monster_recep_prob = 0.6 + 0.1*(noite -2)
 	else:
-		monster_recep_prob = 0.4
+		monster_recep_prob = 0.5
 		
 		
 #DOPEL#######################################################################################
@@ -338,8 +338,10 @@ func janela_proba():
 func janela_set():
 	janela = 0
 	janela_time = 0.0
-	janela_cd = 60.0 - (10*(noite-2))
+	janela_cd = 50.0 - 7*(noite-2)
 	janela_prob = 0.5 + 0.1*(noite -2)
+	janela_in = 20.0 - 3*(noite-2)
+	janela_liberar = 0.0
 	
 
 #ELEVADOR#######################################################################################
@@ -444,5 +446,5 @@ func invasor_proba():
 func invasor_set():
 	invasor = 0
 	invasor_time = 0.0
-	invasor_cd = 15.0 - (15*(noite-3))
+	invasor_cd = 90 - (15*(noite-3))
 	invasor_prob = 0.5 + 0.1*(noite -3)

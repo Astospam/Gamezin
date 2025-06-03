@@ -20,7 +20,7 @@ func set_volume_recep(volume: float):
 func dopel_laugh():
 	playerd.stream = load("res://Audios/Sons/Doppelganger-Audio-cue.ogg")
 	if (not playerd.playing):
-		playerd.play()
+		playerd.play(1.0)
 
 func janela_tocar(volume: float):
 	playerj.stream = load("res://Audios/Sons/Rangido-Janela.ogg")
@@ -36,7 +36,8 @@ func janela_volume(volume: float):
 	
 func tocar_radio():
 	match Global.noite:
-		
+		1:
+			player_radio.stream = load("res://Audios/Sons/Locutor dia 1 completo.ogg")
 		2:
 			player_radio.stream = load("res://Audios/Sons/Áudio Noite 2.ogg")
 		3:
@@ -91,3 +92,10 @@ func invasor_stop():
 	print("stopando")
 	player_invasor.stop()
 	radio_volume(Global.volume_radio)
+
+func pause_radio():
+	if (player_radio.playing):
+		player_radio.stream_paused = true
+
+func despause_radio():
+	player_radio.stream_paused = false

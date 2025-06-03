@@ -32,5 +32,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			get_tree().change_scene_to_file("res://Scenes/computador.tscn")
 		else:
 			Global.local = "menu"
+			SonsController.stop_all()
 			get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 		

@@ -31,7 +31,7 @@ func _process(delta):
 				if (Global.elevador_local == "corredor_janela" and background.texture != corredor_elev):
 					background.texture = corredor_elev
 				else:
-					if (Global.janela == 0 or Global.janela == 4):
+					if ((Global.janela == 0 or Global.janela == 4) and (background.texture != corredor_elev)):
 						if (background.texture != corredor_norm):
 							background.texture = corredor_norm
 					else:

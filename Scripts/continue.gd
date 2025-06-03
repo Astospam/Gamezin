@@ -14,4 +14,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("APEROT")
 		Global.pausado = false
+		SonsController.despause_radio()
 		get_tree().change_scene_to_file("res://Scenes/" + Global.local + ".tscn")

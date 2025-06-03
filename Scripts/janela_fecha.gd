@@ -19,9 +19,10 @@ func _process(delta):
 			Global.janela_pause = true
 		Global.janela_liberar += delta
 		if Global.janela_liberar >= cap:
+			print(Global.janela)
 			Global.janela_liberar = 0.0
 			Global.janela -= 1
-	elif Global.janela_pause:
+	else:
 		Global.janela_pause = false
 		SonsController.janela_stop()
 
@@ -48,9 +49,16 @@ func _process(delta):
 			if back != "nada":
 				back = "nada"
 				background.texture = nada
+				Global.janela = 0
+				Global.janela_time = 0.0
 				SonsController.janela_stop()
 				label.visible = false
 				label2.visible = false
+	if (Global.dopel == 2):
+		back = "jan1"
+		background.texture = jan1
+		label.visible = true
+		label2.visible = true
 
 	
 func _on_mouse_entered():
@@ -64,7 +72,7 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if Global.janela > 0:
+		if Global.janela > 0 and label.visible:
 			pressionando = event.pressed  # true ao pressionar, false ao soltar
 		if Global.dopel == 2 and event.pressed:
 			print("morreu dopel janela")
