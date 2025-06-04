@@ -6,7 +6,7 @@ func _on_pressed() -> void:
 
 	if Global.engines_menu == true and Global.projetos == true:
 		Global.local = "computador"
-		Global.comecar_noite(5)
+		Global.comecar_noite(1)
 		Global.projetos = true
 		Global.engines_menu = false # Esconde o menu Enginer ao entrar no jogo
 		
